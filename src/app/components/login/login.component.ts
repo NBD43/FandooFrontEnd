@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     this.httpService.postRequest('login', this.login).subscribe(
     
       (response: any) => {
-        console.warn("thr response");
+        console.warn("thr response");-
         console.log(response);
         
         if (!error && response.statusCode == 200) {

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
-import { ForgetpasswordComponent } from './components/forgetpassword/forgetpassword.component';
+import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoMaterialModule } from 'src/app/material-module'
@@ -11,14 +11,16 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './components/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ForgetpasswordComponent,
+    ForgotpasswordComponent,
     ResetpasswordComponent,
-    RegisterComponent
+    RegisterComponent,
+    DashboardComponent
     
   ],
   imports: [
