@@ -12,6 +12,11 @@ import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './components/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatInputModule} from '@angular/material/input';
+
+import {MatSidenavModule,MatIconModule} from '@angular/material'
+
 
 @NgModule({
   declarations: [
@@ -31,7 +36,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     DemoMaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,MatIconModule,
+    FlexLayoutModule,MatSidenavModule,MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

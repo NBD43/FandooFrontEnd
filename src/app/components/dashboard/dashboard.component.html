@@ -1,9 +1,66 @@
-<mat-toolbar>
+
+
+<mat-toolbar >
    
+    <!-- <span><button mat-button (click)="sidenav.toggle()"> <mat-icon>dehaze</mat-icon> </button></span>
+    <span><img src="../../../assets/images/png/keep.png"/></span>
+    <span>  <h1>{{title}}</h1></span>
+
+    <mat-icon>search</mat-icon>
+    <span><form class="example-form">
+        
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Search" [formControl]="emailFormControl">
+        </mat-form-field>
+      </form>
+    </span> -->
+    
+
+
+    <div fxLayout="row"  fxLayoutAlign="start center" fxFlex="100" >
+        <span><button mat-button (click)="sidenav.toggle()"> <mat-icon>dehaze</mat-icon> </button></span>
+        <div fxFlex="5"><img src="../../../assets/images/png/keep.png"/></div>
+         <div fxFlex="10" > <h1>{{title}}</h1></div>
+      
+       <div  fxFlex="60" fxLayoutAlign="center center">
+              <mat-form-field class="example-full-width ">
+                <input matInput placeholder="Search" [formControl]="emailFormControl">
+                <mat-icon>search</mat-icon>
+              </mat-form-field>
+           
+       </div>
+       <div fxFlex="5"><button mat-button (click)="sidenav.toggle()"> <mat-icon>refresh</mat-icon> </button></div>
+       <div fxFlex="5"><button mat-button (click)="sidenav.toggle()"> <mat-icon>view_stream</mat-icon> </button></div>
+       <div fxFlex="5"><button mat-button (click)="sidenav.toggle()"> <mat-icon>account_circle</mat-icon> </button></div>
+      
+
+    </div>
+    
   </mat-toolbar>
 
-<div fxLayout="row">
-  <div><p>nilesh</p></div>
-  <div><p>dahiphale</p></div>
-  <div> <span>nilesh</span><span>dahiphale</span></div>
-</div>
+  <mat-sidenav-container class="example-container" >
+      <mat-sidenav class="nav-side" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+                   (closed)="events.push('close!')">
+       
+        <p><button mat-button (click)="onNotes()"> <mat-icon>lightbulb_outline</mat-icon>NOTES </button></p>
+        <p><button mat-button (click)="onReminder()"> <mat-icon>notifications</mat-icon>Reminder </button></p>
+        <p>LABELS</p>
+        <p><button mat-button (click)="onEditLabel()"> <mat-icon>create</mat-icon>EditLabel </button></p>
+        <p><button mat-button (click)="onArchive()"> <mat-icon>archive</mat-icon>Archive </button></p>
+        <p><button mat-button (click)="onDelete()"> <mat-icon>delete</mat-icon>Trash </button></p>
+       
+      </mat-sidenav>
+    
+      <mat-sidenav-content>
+        
+        
+        <p>Events:</p>
+        <div class="example-events">
+          <div *ngFor="let e of events">{{e}}</div>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>\
+
+
+
+
