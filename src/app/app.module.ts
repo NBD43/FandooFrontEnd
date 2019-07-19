@@ -15,7 +15,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatInputModule} from '@angular/material/input';
 
-import {MatSidenavModule,MatIconModule} from '@angular/material'
+import {MatSidenavModule,MatIconModule} from '@angular/material';
+import { DemoComponent } from './components/demo/demo.component'
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {MatSidenavModule,MatIconModule} from '@angular/material'
     ForgotpasswordComponent,
     ResetpasswordComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    DemoComponent
     
   ],
   imports: [

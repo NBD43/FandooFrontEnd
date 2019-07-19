@@ -22,17 +22,19 @@
         <div fxFlex="5"><img src="../../../assets/images/png/keep.png"/></div>
          <div fxFlex="10" > <h1>{{title}}</h1></div>
       
-       <div  fxFlex="60" fxLayoutAlign="center center">
-              <mat-form-field class="example-full-width ">
-                <input matInput placeholder="Search" [formControl]="emailFormControl">
-                <mat-icon>search</mat-icon>
-              </mat-form-field>
+       <div  class ="searchbox"fxFlex="30" fxLayoutAlign="space-between center">
+              
+                <input style="border: none;margin-left: 9px; outline: none"fxFlex='80' autocomplete="off"  matInput placeholder="Search" [formControl]="emailFormControl">
+                <mat-icon >search</mat-icon>
+              
            
        </div>
-       <div fxFlex="5"><button mat-button (click)="sidenav.toggle()"> <mat-icon>refresh</mat-icon> </button></div>
+       <!-- <div fxFlex="5"><button mat-button (click)="sidenav.toggle()"> <mat-icon>refresh</mat-icon> </button></div>
        <div fxFlex="5"><button mat-button (click)="sidenav.toggle()"> <mat-icon>view_stream</mat-icon> </button></div>
-       <div fxFlex="5"><button mat-button (click)="sidenav.toggle()"> <mat-icon>account_circle</mat-icon> </button></div>
-      
+       <div fxFlex="5"><button mat-button (click)="sidenav.toggle()"> <mat-icon>account_circle</mat-icon> </button></div> -->
+      <div fxFlex fxLayoutAlign="end center" fxLayoutGap='6%'> <span> <mat-icon mat-button (click)="sidenav.toggle()">refresh</mat-icon></span>
+        <span> <mat-icon>view_stream</mat-icon></span>
+        <span> <mat-icon>account_circle</mat-icon></span></div>
 
     </div>
     
