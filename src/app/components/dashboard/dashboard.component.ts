@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import { Router } from "@angular/router";
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  email:string;
+  token:string;
   title = 'FundooNotes';
   events: string[] = [];
   opened: boolean;
@@ -14,9 +17,20 @@ export class DashboardComponent implements OnInit {
     Validators.email,
   ]);
 
-  constructor() { }
+  constructor(private router:Router
+    ) { }
 
+  
   ngOnInit() {
+    this.token=localStorage.getItem('token')
+    this.email=localStorage.getItem('email')
+  }
+
+
+  onlogout(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
+     this.router.navigate(['/login']);
   }
 
   onNotes(){
@@ -43,5 +57,8 @@ export class DashboardComponent implements OnInit {
     alert("trash notes are here");
 
   }
-
+upload(event){
+  console.log("clicked event",event);
+  
+}
 }

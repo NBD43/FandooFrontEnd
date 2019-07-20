@@ -1,6 +1,6 @@
 
 
-<mat-toolbar >
+<mat-toolbar style="background: white; border-bottom:5px  black" >
    
     <!-- <span><button mat-button (click)="sidenav.toggle()"> <mat-icon>dehaze</mat-icon> </button></span>
     <span><img src="../../../assets/images/png/keep.png"/></span>
@@ -22,19 +22,20 @@
         <div fxFlex="5"><img src="../../../assets/images/png/keep.png"/></div>
          <div fxFlex="10" > <h1>{{title}}</h1></div>
       
-       <div  class ="searchbox"fxFlex="30" fxLayoutAlign="space-between center">
+       <div  class ="searchbox"fxFlex="30" fxLayoutAlign="space-between center" style="height: 38px">
               
-                <input style="border: none;margin-left: 9px; outline: none"fxFlex='80' autocomplete="off"  matInput placeholder="Search" [formControl]="emailFormControl">
+                <input style="border: none;margin-left: 9px; outline: none; background: whitesmoke"fxFlex='80' autocomplete="off"  matInput placeholder="Search" [formControl]="emailFormControl">
                 <mat-icon >search</mat-icon>
               
            
        </div>
+       <input type="file" #fileselect (change)="upload($event)" style="display: none">
        <!-- <div fxFlex="5"><button mat-button (click)="sidenav.toggle()"> <mat-icon>refresh</mat-icon> </button></div>
        <div fxFlex="5"><button mat-button (click)="sidenav.toggle()"> <mat-icon>view_stream</mat-icon> </button></div>
        <div fxFlex="5"><button mat-button (click)="sidenav.toggle()"> <mat-icon>account_circle</mat-icon> </button></div> -->
       <div fxFlex fxLayoutAlign="end center" fxLayoutGap='6%'> <span> <mat-icon mat-button (click)="sidenav.toggle()">refresh</mat-icon></span>
         <span> <mat-icon>view_stream</mat-icon></span>
-        <span> <mat-icon>account_circle</mat-icon></span></div>
+        <span> <mat-icon (click)="fileselect.click()">account_circle</mat-icon></span></div>
 
     </div>
     
@@ -43,14 +44,14 @@
   <mat-sidenav-container class="example-container" >
       <mat-sidenav class="nav-side" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
                    (closed)="events.push('close!')">
-       
-        <p><button mat-button (click)="onNotes()"> <mat-icon>lightbulb_outline</mat-icon>NOTES </button></p>
-        <p><button mat-button (click)="onReminder()"> <mat-icon>notifications</mat-icon>Reminder </button></p>
-        <p>LABELS</p>
-        <p><button mat-button (click)="onEditLabel()"> <mat-icon>create</mat-icon>EditLabel </button></p>
-        <p><button mat-button (click)="onArchive()"> <mat-icon>archive</mat-icon>Archive </button></p>
-        <p><button mat-button (click)="onDelete()"> <mat-icon>delete</mat-icon>Trash </button></p>
-       
+                   <div fxLayout="column"  fxLayoutAlign="center start "  >
+        <div (click)="onNotes()"  style="width: 200px; height: 50px"  fxLayout="row" fxLayoutAlign="space-evenly center"> <mat-icon >lightbulb_outline</mat-icon>NOTES </div>
+        <div (click)="onReminder()" style="width: 200px; height: 50px;  border-bottom:1px solid black" fxLayout="row" fxLayoutAlign="space-evenly center">  <mat-icon >notifications</mat-icon>Reminder </div>
+        <div  style="width: 250px; height: 50px;" fxLayout="row" fxLayoutAlign="start center"><b>Labels</b></div>
+        <div (click)="onEditLabel()" style="width: 200px; height: 50px; border-bottom:1px solid black"  fxLayout="row" fxLayoutAlign="space-evenly center"><mat-icon >create</mat-icon>EditLabel </div>
+        <div (click)="onArchive()" style="width: 200px; height: 50px" fxLayout="row" fxLayoutAlign="space-evenly center"> <mat-icon >archive</mat-icon>Archive </div>
+        <div (click)="onDelete() "style="width: 200px; height: 50px" fxLayout="row" fxLayoutAlign="space-evenly center"> <mat-icon >delete</mat-icon>Trash </div>
+      </div>
       </mat-sidenav>
     
       <mat-sidenav-content>
