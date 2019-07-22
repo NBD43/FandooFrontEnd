@@ -1,10 +1,16 @@
-<mat-toolbar color="primary">
-        <button mat-raised-button color="primary" id="login" routerLink='/login'> <mat-icon>dehaze</mat-icon>  </button>
-    <span><mat-icon>search</mat-icon> </span>
-    <span>Application Title</span>
-  
-    <!-- This fills the remaining space of the current row -->
-    <span class="example-fill-remaining-space"></span>
-  
-    <span>Right Aligned Text</span>
-  </mat-toolbar>
+<h1>Demo</h1>
+<input type="file" (change)="fileChangeEvent($event)" />
+
+<image-cropper
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="4 / 3"
+    [resizeToWidth]="128"
+    format="png"
+    (imageCropped)="imageCropped($event)"
+    (imageLoaded)="imageLoaded()"
+    (cropperReady)="cropperReady()"
+    (loadImageFailed)="loadImageFailed()"
+></image-cropper>
+<button mat-button (click)=" imageCropped($event)"> Crop </button>
+<img [src]="croppedImage"  />

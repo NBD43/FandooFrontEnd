@@ -14,9 +14,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatInputModule} from '@angular/material/input';
-
+import { ImageCropperModule } from 'ngx-image-cropper';
 import {MatSidenavModule,MatIconModule} from '@angular/material';
-import { DemoComponent } from './components/demo/demo.component'
+import { DemoComponent } from './components/demo/demo.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import { DemoComponent } from './components/demo/demo.component'
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,MatIconModule,
-    FlexLayoutModule,MatSidenavModule,MatInputModule
+    FlexLayoutModule,MatSidenavModule,MatInputModule,ImageCropperModule,MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,8 +7,9 @@ import { Router } from "@angular/router";
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  email:string;
-  token:string;
+  email:any;
+  token:any;
+  profile:string;
   title = 'FundooNotes';
   events: string[] = [];
   opened: boolean;
@@ -23,13 +24,16 @@ export class DashboardComponent implements OnInit {
   
   ngOnInit() {
     this.token=localStorage.getItem('token')
-    this.email=localStorage.getItem('email')
+    this.email=localStorage.getItem('emailId')
+    console.log(this.token)
+    console.log(this.email)
+  
   }
 
 
   onlogout(){
     localStorage.removeItem('token');
-    localStorage.removeItem('email');
+    localStorage.removeItem('emailId');
      this.router.navigate(['/login']);
   }
 

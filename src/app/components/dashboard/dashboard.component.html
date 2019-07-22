@@ -30,12 +30,25 @@
            
        </div>
        <input type="file" #fileselect (change)="upload($event)" style="display: none">
+       
        <!-- <div fxFlex="5"><button mat-button (click)="sidenav.toggle()"> <mat-icon>refresh</mat-icon> </button></div>
        <div fxFlex="5"><button mat-button (click)="sidenav.toggle()"> <mat-icon>view_stream</mat-icon> </button></div>
        <div fxFlex="5"><button mat-button (click)="sidenav.toggle()"> <mat-icon>account_circle</mat-icon> </button></div> -->
       <div fxFlex fxLayoutAlign="end center" fxLayoutGap='6%'> <span> <mat-icon mat-button (click)="sidenav.toggle()">refresh</mat-icon></span>
         <span> <mat-icon>view_stream</mat-icon></span>
-        <span> <mat-icon (click)="fileselect.click()">account_circle</mat-icon></span></div>
+        <span> <mat-icon (click)="fileselect.click()">account_circle</mat-icon></span>
+        <span> <img style="width: 25px;
+          height: 25px;
+          border-radius: 11px;" src="http://localhost:8080/user/getprofilepic/{{token}}" [matMenuTriggerFor]="beforeMenu">
+          <mat-menu #beforeMenu="matMenu" xPosition="before">
+          <button mat-menu-item> <img style="width: 40px;
+            height: 40px;
+            border-radius: 11px;" src="http://localhost:8080/user/getprofilepic/{{token}}">     </button>
+            
+            <button mat-menu-item>UploadProfile</button>
+            <button mat-menu-item (click)="onlogout()">LOGOUT</button>
+          </mat-menu></span></div>
+       
 
     </div>
     
