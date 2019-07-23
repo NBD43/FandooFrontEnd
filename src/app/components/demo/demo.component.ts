@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
-
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
@@ -10,16 +10,21 @@ export class DemoComponent implements OnInit {
   imageChangedEvent: any = '';
     croppedImage: any = '';
 
-    constructor() { }
+    constructor(public dialogRef:MatDialogRef<DemoComponent>) { }
 
     ngOnInit() {
+    
+     
     }
     
     fileChangeEvent(event: any): void {
         this.imageChangedEvent = event;
+
+        console.log("change image",this.croppedImage)
     }
     imageCropped(event: ImageCroppedEvent) {
-        this.croppedImage = event.base64;
+        this.croppedImage = event;
+        console.log("crop image",this.croppedImage)
     }
     imageLoaded() {
         // show cropper
@@ -29,6 +34,11 @@ export class DemoComponent implements OnInit {
     }
     loadImageFailed() {
         // show message
+    }
+    setProfile(){
+        if(this.croppedImage!=null){
+            this.dialogRef.close(this.croppedImage);
+        }
     }
 
 

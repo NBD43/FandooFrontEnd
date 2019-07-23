@@ -18,6 +18,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import {MatSidenavModule,MatIconModule} from '@angular/material';
 import { DemoComponent } from './components/demo/demo.component';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatDialogModule} from '@angular/material/dialog';
+import { AuthGuard } from './service/auth.guard';
 
 
 @NgModule({
@@ -40,9 +42,9 @@ import {MatMenuModule} from '@angular/material/menu';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,MatIconModule,
-    FlexLayoutModule,MatSidenavModule,MatInputModule,ImageCropperModule,MatMenuModule
+    FlexLayoutModule,MatSidenavModule,MatInputModule,ImageCropperModule,MatMenuModule,MatDialogModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

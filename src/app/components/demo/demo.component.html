@@ -1,4 +1,7 @@
-<h1>Demo</h1>
+<h2 mat-dialog-title>ProfilePic</h2>
+<mat-dialog-content class="mat-typography">
+
+
 <input type="file" (change)="fileChangeEvent($event)" />
 
 <image-cropper
@@ -14,3 +17,8 @@
 ></image-cropper>
 <button mat-button (click)=" imageCropped($event)"> Crop </button>
 <img [src]="croppedImage"  />
+</mat-dialog-content>
+<mat-dialog-actions style="align:end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="setProfile()" [mat-dialog-close]="true" cdkFocusInitial>Done</button>
+</mat-dialog-actions>

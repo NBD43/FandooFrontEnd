@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
     providedIn: 'root'
 })
@@ -24,6 +24,19 @@ export class HttpService {
     }
     public forgetRequest(url : any,data:any) : any{
       return this.http.get(this.baseurl + url);
+    }
+
+    public uploadImage(url :any,token:any,data:any):any{
+      return this.http.put(this.baseurl+ url,token,data);
+    }
+
+    public uploadProfileImage(url,file: File):any
+    {
+      let formdata: FormData = new FormData();
+      formdata.append('File',file);
+      return this.http.put(this.baseurl+url,formdata,{
+            headers:new HttpHeaders().set("token",localStorage.getItem("token")), 
+                        observe:'response'});
     }
 
   
