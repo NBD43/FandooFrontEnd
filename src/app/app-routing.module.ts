@@ -7,15 +7,23 @@ import { RegisterComponent } from './components/register/register.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {DemoComponent} from './components/demo/demo.component'
 import { AuthGuard } from './service/auth.guard';
+import { NoteiconComponent } from './components/noteicon/noteicon.component';
+import { GetnoteComponent } from './components/getnote/getnote.component';
+
 
 
 const routes: Routes = [
+  {path:'',component:LoginComponent},
   { path: 'login', component: LoginComponent },
  { path: 'register', component:RegisterComponent },
  { path: 'forgotpassword', component: ForgotpasswordComponent },
  { path: 'resetpassword', component: ResetpasswordComponent },
  { path:'dashboard', component:DashboardComponent, canActivate: [AuthGuard]},
- { path:'demo',component:DemoComponent}
+ { path:'demo',component:DemoComponent},
+ { path:'icon',component:NoteiconComponent},
+ { path:'getnote',component:GetnoteComponent}
+
+ 
 
 
 

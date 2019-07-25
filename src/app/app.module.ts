@@ -20,6 +20,10 @@ import { DemoComponent } from './components/demo/demo.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AuthGuard } from './service/auth.guard';
+import {MatCardModule} from '@angular/material/card';
+import { NoteiconComponent } from './components/noteicon/noteicon.component';
+import { GetnoteComponent } from './components/getnote/getnote.component';
+
 
 
 @NgModule({
@@ -30,7 +34,9 @@ import { AuthGuard } from './service/auth.guard';
     ResetpasswordComponent,
     RegisterComponent,
     DashboardComponent,
-    DemoComponent
+    DemoComponent,
+    NoteiconComponent,
+    GetnoteComponent
     
   ],
   imports: [
@@ -42,7 +48,7 @@ import { AuthGuard } from './service/auth.guard';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,MatIconModule,
-    FlexLayoutModule,MatSidenavModule,MatInputModule,ImageCropperModule,MatMenuModule,MatDialogModule
+    FlexLayoutModule,MatSidenavModule,MatInputModule,ImageCropperModule,MatMenuModule,MatDialogModule,MatCardModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

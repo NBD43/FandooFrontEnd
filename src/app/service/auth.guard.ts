@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
        } else  {
          // Token from the LogIn is not avaible because something went wrong or the user wants to go over the url to the site
          // Hands the user to the LogIn page 
-         alert("You are currently not logged in, please provide Login!")
+         //alert("You are currently not logged in, please provide Login!")
          this.router.navigate( ["/login"] );
          return false
  

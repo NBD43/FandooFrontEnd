@@ -5,9 +5,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
     providedIn: 'root'
 })
+
 export class HttpService {
     baseurl = environment.baseUrl;
-  
     constructor(private http: HttpClient) { }
     
     public postRequest(url :any, data: any ):any{
@@ -29,6 +29,7 @@ export class HttpService {
     public uploadImage(url :any,token:any,data:any):any{
       return this.http.put(this.baseurl+ url,token,data);
     }
+    
 
     public uploadProfileImage(url,file: File):any
     {
@@ -39,6 +40,24 @@ export class HttpService {
                         observe:'response'});
     }
 
+    /**
+     * @description    NOTES OPERATIONS
+     */
+    public createNote(url :any,data:any,token:any):any{
+      return this.http.post(this.baseurl+ url,data,{
+        headers:{
+          'token':localStorage.getItem('token')
+        }
+      });
+    }
+
+    public getNotes(url){
+      return this.http.get(url,{
+        headers:{
+          "token":localStorage.getItem('token')
+        }
+      });
+    }
   
     
 }

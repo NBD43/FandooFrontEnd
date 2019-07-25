@@ -6,17 +6,22 @@ import { error } from 'util';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
 import {DemoComponent} from '../demo/demo.component'
+import { Note } from 'src/app/model/note';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+
+  note : Note = new Note();
+
   email:any;
   token:any;
   profile:string;
-  title = 'FundooNotes';
+  fundooTitle = 'FundooNotes';
   events: string[] = [];
+  matBoolean : boolean = false;
   opened: boolean;
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -26,6 +31,8 @@ export class DashboardComponent implements OnInit {
   constructor(private router:Router,private snackBar: MatSnackBar, private httpService: HttpService,private dialog: MatDialog
     ) { }
 
+    title = new FormControl('',Validators.required);
+    description = new FormControl('',Validators.required);
   
 
   openDialog() {
@@ -46,6 +53,25 @@ export class DashboardComponent implements OnInit {
   
   }
 
+  addNote(){
+    if(this.title.value == null && this.description.value == null){
+      return false
+    }
+    else{
+      this.note.title = this.title.value;
+      this.note.description = this.description.value;
+      var data ={
+        "title":this.note.title,
+        "description":this.note.description
+      }
+      var url ='note/create';
+      this.httpService.createNote(url,data,this.token).subscribe((response:any)=>{
+        console.log('add note response ',response);
+        
+      });
+    }
+  }
+
 
   selectProfile() {
     const dialogRef = this.dialog.open(DemoComponent,
@@ -59,7 +85,7 @@ export class DashboardComponent implements OnInit {
         {
           if(x!=null)
           { 
-            console.log("hjkjhkjh",x.file)
+            console.log("file",x.file)
             this.httpService.uploadProfileImage('uploadprofile',x.file).subscribe(
             value =>
             {
@@ -78,8 +104,9 @@ export class DashboardComponent implements OnInit {
     window.location.reload();
   }
   onlogout(){
-    localStorage.removeItem('token');
-    localStorage.removeItem('emailId');
+    localStorage.clear();
+    //localStorage.removeItem('token');
+    //localStorage.removeItem('emailId');
      this.router.navigate(['/login']);
   }
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { HttpService } from 'src/app/service/http-service';
 import { MatSnackBar } from '@angular/material';
-import { forgotPassword } from "src/app/model/forgotPassword-model";
+import { ForgotPasswordModel } from "src/app/model/forgotPassword-model";
 
 @Component({
   selector: 'app-forgotpassword',
@@ -10,7 +10,7 @@ import { forgotPassword } from "src/app/model/forgotPassword-model";
   styleUrls: ['./forgotpassword.component.scss']
 })
 export class ForgotpasswordComponent implements OnInit {
-  forgot: forgotPassword = new forgotPassword()
+  forgot: ForgotPasswordModel = new ForgotPasswordModel()
   emailId: string;
   forgotpasswordForm: FormGroup;
   constructor(private snackBar: MatSnackBar,
@@ -29,8 +29,8 @@ export class ForgotpasswordComponent implements OnInit {
   }
 
   onSubmit() {
-
-    this.httpservice.postRequest("forgotpassword",this.emailId).subscribe(
+    console.log(this.forgot )
+    this.httpservice.postRequest("forgetpassword",this.forgot).subscribe(
       (response: any) => {
         if (response.statusCode == 200) {
           console.log(response);
@@ -48,7 +48,7 @@ export class ForgotpasswordComponent implements OnInit {
           )
         }
       }
-    )
+    );
   }
 
 }

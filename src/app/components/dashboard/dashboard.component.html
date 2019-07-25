@@ -20,7 +20,7 @@
     <div fxLayout="row"  fxLayoutAlign="start center" fxFlex="100" >
         <span><button mat-button (click)="sidenav.toggle()"> <mat-icon>dehaze</mat-icon> </button></span>
         <div fxFlex="5"><img src="../../../assets/images/png/keep.png"/></div>
-         <div fxFlex="10" > <h1>{{title}}</h1></div>
+         <div fxFlex="10" > <h1>{{fundooTitle}}</h1></div>
       
        <div  class ="searchbox"fxFlex="30" fxLayoutAlign="space-between center" style="height: 38px">
               
@@ -68,14 +68,45 @@
       </mat-sidenav>
     
       <mat-sidenav-content>
-        
-        
+        <div>
+              <div fxLayout="row" fxLayoutAlign="center center">
+                 <mat-card style="width: 30%">
+                   <p> <input *ngIf="!matBoolean" (click)="matBoolean = !matBoolean" style="border: none;margin-left: 9px; outline: none; background: whitesmoke"fxFlex='80' autocomplete="off"  matInput placeholder="Take a Note..." ></p>
+                </mat-card>
+              </div>
+
+
+              <div fxLayout="row" fxLayoutAlign="center center">
+                <mat-card style="width: 30%" *ngIf="matBoolean" >
+
+                    <mat-card-content >
+                       <p> <input style="border: none;margin-left: 9px; outline: none; background: whitesmoke"fxFlex='80' autocomplete="off"  matInput placeholder="Title" [formControl]="title"></p>
+                       <p> <input style="border: none;margin-left: 9px; outline: none; background: whitesmoke"fxFlex='80' autocomplete="off"  matInput placeholder="Take a Note..." [formControl]="description"></p>
+                  </mat-card-content>
+              
+              
+                  <mat-card-footer> 
+                     <div class="cardFooterIcons" fxLayout="row" fxLayoutAlign="space-evenly center" >
+                        <app-noteicon></app-noteicon>
+                        <span><mat-icon>more_vert</mat-icon>  </span>
+                        <span><mat-icon>undo</mat-icon>  </span>
+                        <span> <mat-icon>redo</mat-icon> </span>
+                        <span><button mat-button (click)="addNote()" (click)="matBoolean = !matBoolean">Close</button></span>
+
+                      </div>
+                   </mat-card-footer>
+                 </mat-card>
+               </div>
+          </div>
+
+         <app-getnote></app-getnote>
+<!--         
         <p>Events:</p>
         <div class="example-events">
           <div *ngFor="let e of events">{{e}}</div>
-        </div>
+        </div> -->
       </mat-sidenav-content>
-    </mat-sidenav-container>\
+    </mat-sidenav-container>
 
 
 
