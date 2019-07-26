@@ -14,6 +14,11 @@ notesArray : any[] = [];
 
   ngOnInit() {
     this.getAllNotes()
+    // this.receiveColor();
+  }
+  getcolor :string;
+  receiveColor(color){
+    this.getcolor = color;
   }
 
   getAllNotes(){

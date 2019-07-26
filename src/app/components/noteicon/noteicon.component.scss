@@ -4,3 +4,12 @@
     font-size: 20px;
     color: rgba($color: #000000, $alpha: 0.6)
 }
+.matMenuColour{
+    width: 25px;
+
+
+}
+
+/deep/ .mat-menu-panel{
+    width: 10%;
+}

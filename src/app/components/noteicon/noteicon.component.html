@@ -1,7 +1,12 @@
-<div class="icons" fxLayout="row" fxLayoutAlign="space-around center">
+<div class="icons" [ngStyle]="{'background':itemcolor}" fxLayout="row" fxLayoutAlign="space-around center">
         <mat-icon (click)="onReminder()">add_alert</mat-icon>
         <mat-icon (click)="onCollaborator()">person_add</mat-icon> 
-        <mat-icon (click)="noteColorChanger()">color_lens</mat-icon>
+        <mat-icon  [matMenuTriggerFor]="aboveMenu">color_lens</mat-icon>
+        <mat-menu  #aboveMenu="matMenu" >
+                <div fxLayout="row wrap" >
+                <div *ngFor= "let itemcolor of colorArray" (click)="onColorChange(itemcolor)" style="height: 25px;width:25px;border-radius: 50%" [ngStyle]="{'background': itemcolor }"></div>        
+                </div>        
+        </mat-menu>
         <mat-icon (click)="addImageToNote()">image</mat-icon> 
         <mat-icon (click)="addToTrash()">archive</mat-icon>
 </div>

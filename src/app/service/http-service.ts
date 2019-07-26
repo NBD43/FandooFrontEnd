@@ -58,6 +58,16 @@ export class HttpService {
         }
       });
     }
+
+    public noteColorChanger(url,data){
+      console.log(url,data);
+      
+      return this.http.put(this.baseurl+url,data,{
+        headers:{
+          "token":localStorage.getItem('token')
+        }
+      });
+    }
   
     
 }
