@@ -55,6 +55,7 @@ export class NoteiconComponent implements OnInit {
     this.httpService.noteColorChanger(url,data).subscribe((response:any)=>{
       console.log(response);
       
+      
     });
   }
 }

@@ -1,0 +1,23 @@
+
+  
+
+<mat-card  style="width: 80% ;" >
+    <mat-dialog-content>
+        <mat-card-content >
+           <p> <input  value="title is there" style="border: none;margin-left: 9px; outline: none; background: whitesmoke"fxFlex='80%' autocomplete="off"  matInput aria-placeholder="Title" [formControl]="title"></p>
+           <p> <input value="description is there" style="border: none;margin-left: 9px; outline: none; background: whitesmoke"fxFlex='80%' autocomplete="off"  matInput placeholder="Take a Note..." [formControl]="description"></p>
+      </mat-card-content>
+    </mat-dialog-content>
+  
+      <mat-card-footer> 
+         <div class="cardFooterIcons" fxLayout="row" fxLayoutAlign="space-evenly center" >
+            <app-noteicon></app-noteicon>
+            <span><mat-icon>more_vert</mat-icon>  </span>
+            <span><mat-icon>undo</mat-icon>  </span>
+            <span> <mat-icon>redo</mat-icon> </span>
+            <span><button mat-button (click)="update()">Close</button></span>
+
+          </div>
+       </mat-card-footer>
+     </mat-card>
+    

@@ -23,6 +23,9 @@ import { AuthGuard } from './service/auth.guard';
 import {MatCardModule} from '@angular/material/card';
 import { NoteiconComponent } from './components/noteicon/noteicon.component';
 import { GetnoteComponent } from './components/getnote/getnote.component';
+import { NoteeditComponent } from './components/noteedit/noteedit.component';
+import { LabelComponent } from './components/label/label.component';
+import { PracticeComponent } from './components/practice/practice.component';
 
 
 
@@ -36,7 +39,10 @@ import { GetnoteComponent } from './components/getnote/getnote.component';
     DashboardComponent,
     DemoComponent,
     NoteiconComponent,
-    GetnoteComponent
+    GetnoteComponent,
+    NoteeditComponent,
+    LabelComponent,
+    PracticeComponent
     
   ],
   imports: [

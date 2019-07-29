@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
 import {DemoComponent} from '../demo/demo.component'
 import { Note } from 'src/app/model/note';
+import { DataserviceService } from 'src/app/service/dataservice.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -27,8 +28,8 @@ export class DashboardComponent implements OnInit {
     Validators.required,
     Validators.email,
   ]);
-
-  constructor(private router:Router,private snackBar: MatSnackBar, private httpService: HttpService,private dialog: MatDialog
+  message:String;
+  constructor(private router:Router,private snackBar: MatSnackBar, private httpService: HttpService,private dialog: MatDialog,private dataService:DataserviceService
     ) { }
 
     title = new FormControl('',Validators.required);
@@ -44,6 +45,7 @@ export class DashboardComponent implements OnInit {
   }
   
   ngOnInit() {
+    this.dataService.currentMessage.subscribe(message => this.message = message)
     this.token=localStorage.getItem('token')
     this.email=localStorage.getItem('emailId')
     console.log(this.token)
@@ -66,7 +68,9 @@ export class DashboardComponent implements OnInit {
       }
       var url ='note/create';
       this.httpService.createNote(url,data,this.token).subscribe((response:any)=>{
+        
         console.log('add note response ',response);
+        this.dataService.changeMessage('change');
         
       });
     }
@@ -90,7 +94,8 @@ export class DashboardComponent implements OnInit {
             value =>
             {
               console.log(value);
-              this.onRefresh();
+              this.dataService.changeMessage('rewq');
+             // this.onRefresh();
             
             }
           );

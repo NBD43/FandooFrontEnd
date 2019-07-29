@@ -68,6 +68,15 @@ export class HttpService {
         }
       });
     }
+
+    public editnote(url,data){
+      return this.http.put(this.baseurl+url,data,{
+        headers:{
+          "token":localStorage.getItem('token')
+        }
+      });
+
+    }
   
     
 }

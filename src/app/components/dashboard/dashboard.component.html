@@ -86,6 +86,7 @@
               
               
                   <mat-card-footer> 
+                      <mat-dialog-actions align="end">
                      <div class="cardFooterIcons" fxLayout="row" fxLayoutAlign="space-evenly center" >
                         <app-noteicon></app-noteicon>
                         <span><mat-icon>more_vert</mat-icon>  </span>
@@ -94,6 +95,8 @@
                         <span><button mat-button (click)="addNote()" (click)="matBoolean = !matBoolean">Close</button></span>
 
                       </div>
+                      </mat-dialog-actions>
+                      
                    </mat-card-footer>
                  </mat-card>
                </div>
