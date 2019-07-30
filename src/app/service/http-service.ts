@@ -72,10 +72,20 @@ export class HttpService {
     public editnote(url,data){
       return this.http.put(this.baseurl+url,data,{
         headers:{
-          "token":localStorage.getItem('token')
+          'token':localStorage.getItem('token')
         }
       });
 
+    }
+
+    public archiveUnarchivenote(url,note){
+      console.log(url);
+      
+      return this.http.put(this.baseurl+url,note,{
+       headers:{
+        'token':localStorage.getItem('token')
+      }
+      });
     }
   
     

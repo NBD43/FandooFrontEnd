@@ -117,6 +117,7 @@ export class DashboardComponent implements OnInit {
 
   onNotes(){
     alert("Notes are here");
+    this.router.navigate(['/dashboard'])
 
   }
 
@@ -132,6 +133,7 @@ export class DashboardComponent implements OnInit {
 
   onArchive(){
     alert("Archieve Notes are Here");
+    this.router.navigate(['/archive'])
 
   }
 

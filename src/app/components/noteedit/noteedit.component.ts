@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-noteedit',
@@ -9,13 +9,13 @@ import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 })
 export class NoteeditComponent implements OnInit {
 
-  title = new FormControl('',Validators.required);
-    description = new FormControl('',Validators.required);
-  constructor(public dialogRef:MatDialogRef<NoteeditComponent>) { }
+  constructor(public dialogRef:MatDialogRef<NoteeditComponent>,@Inject(MAT_DIALOG_DATA) public data: any,) { }
 
-  
+  title = new FormControl(this.data.title);
+  description = new FormControl(this.data.description);
+  noteColor = this.data.color;
   ngOnInit() {
-   
+    console.log("data", this.data);
 
   }
 
@@ -27,11 +27,11 @@ export class NoteeditComponent implements OnInit {
     else{
       this.title = this.title.value;
       this.description = this.description.value;
-      var data ={
+      var data2 ={
         "title":this.title,
         "description":this.description
       }
-      this.dialogRef.close(data);
+      this.dialogRef.close(data2);
     }
   }
 

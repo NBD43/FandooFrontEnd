@@ -45,11 +45,16 @@ message:String;
   getcolor :string;
   receiveColor(color){
     this.getcolor = color;
-    //this.getAllNotes()
+    this.getAllNotes()
 
+  }
+  changedColor(color){
+    this.getcolor = color;
+    this.getAllNotes();
   }
 
   getAllNotes(){
+    this.notesArray=[]
   this.httpService.getNotes(this.path).subscribe((res:any)=>{
     console.log('get all notes response',res);
     res.forEach((card:any)=>{
@@ -61,10 +66,18 @@ message:String;
   onEdit(data){
     console.log(data);
     alert(data);
+    
     const dialogRef = this.dialog.open(NoteeditComponent,
       {
-        width: '600px',
-        height:'150px'
+        panelClass:'myapp-no-padding-dialog',
+         width: '60vw',
+         height:'20vh',
+        data:{
+          noteId:data.noteId,
+          color:data.colour,
+          title:data.title,
+          description:data.description
+        }
       });
   
       dialogRef.afterClosed().subscribe(
@@ -73,7 +86,7 @@ message:String;
           if(data2!=null)
           { 
             console.log(data2)
-            this.httpService.editnote('note/update?noteId='+data,data2).subscribe(
+            this.httpService.editnote('note/update?noteId='+data.noteId,data2).subscribe(
             value =>
             {
               console.log(value);

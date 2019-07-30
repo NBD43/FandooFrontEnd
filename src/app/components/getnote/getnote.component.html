@@ -1,7 +1,7 @@
 <div fxLayout="row wrap" fxLayoutAlign="center center">
         <mat-card class="getNoteDiv"  *ngFor="let item of notesArray" [ngStyle]="{'background': item.colour}">
 
-            <mat-card-content (click)=onEdit(item.noteId)>
+            <mat-card-content (click)=onEdit(item)>
                <p> {{ item.title }} </p>
                <p> {{ item.description}} </p>
           </mat-card-content>
@@ -9,7 +9,7 @@
       
           <mat-card-footer> 
              <div class="cardFooterIcons" fxLayout="row" fxLayoutAlign="space-evenly center" >
-                <app-noteicon (color)="receiveColor(color)" [noteDetails]="item.noteId" ></app-noteicon>
+                <app-noteicon (color)="receiveColor(color)"(colorChanged)="changedColor(color)" [noteDetails]="item" ></app-noteicon>
                 <span><mat-icon>more_vert</mat-icon>  </span>
                 <span><mat-icon>undo</mat-icon>  </span>
                 <span> <mat-icon>redo</mat-icon> </span>

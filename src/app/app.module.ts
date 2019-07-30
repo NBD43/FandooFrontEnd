@@ -26,6 +26,7 @@ import { GetnoteComponent } from './components/getnote/getnote.component';
 import { NoteeditComponent } from './components/noteedit/noteedit.component';
 import { LabelComponent } from './components/label/label.component';
 import { PracticeComponent } from './components/practice/practice.component';
+//import { ArchiveComponent } from './components/archive/archive.component';
 
 
 
@@ -42,7 +43,8 @@ import { PracticeComponent } from './components/practice/practice.component';
     GetnoteComponent,
     NoteeditComponent,
     LabelComponent,
-    PracticeComponent
+    PracticeComponent,
+    //ArchiveComponent
     
   ],
   imports: [

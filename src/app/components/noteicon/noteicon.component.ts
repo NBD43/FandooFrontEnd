@@ -12,8 +12,8 @@ export class NoteiconComponent implements OnInit {
     "#f06292","#ce93d8","#81D4FA","#FFAB91","#a5d6a7","#bdbdbd","#FFE57F","#00BCD4"
   ]
 
-  @Input() noteDetails:any[] =[];
-  @Output() color : EventEmitter<any> = new EventEmitter();
+  @Input() noteDetails:any;
+  @Output() colorChanged : EventEmitter<any> = new EventEmitter();
 
   constructor(private httpService:HttpService) { }
 
@@ -39,22 +39,30 @@ export class NoteiconComponent implements OnInit {
     alert("set the note background image");
   }
 
-  addToTrash(){
-    alert("add the note to trash");
+  addArchive(note:any){
+    //alert("add the note to trash");
+  // console.log(note);
+  
+    var url="note/archive?noteId="+note.noteId
+    this.httpService.archiveUnarchivenote(url,note).subscribe((response:any)=>{
+      console.log(response);
+    });
+
+
   }
 
   onColorChange(color){
     console.log(color);
-    this.color.emit(color);
+  
     console.log(this.noteDetails);
     var data = {
       "color":color,
-      "noteId":this.noteDetails
+      "noteId":this.noteDetails.noteId
     }
     var url ="note/colour"
     this.httpService.noteColorChanger(url,data).subscribe((response:any)=>{
       console.log(response);
-      
+      this.colorChanged.emit(color);
       
     });
   }
