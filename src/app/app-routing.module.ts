@@ -12,6 +12,8 @@ import { GetnoteComponent } from './components/getnote/getnote.component';
 import { NoteeditComponent } from './components/noteedit/noteedit.component';
 import { LabelComponent } from './components/label/label.component';
 import { PracticeComponent } from './components/practice/practice.component';
+import { ArchiveComponent } from './components/archive/archive.component';
+import { TrashnoteComponent } from './components/trashnote/trashnote.component';
 //import { ArchiveComponent } from './components/archive/archive.component';
 
 
@@ -23,7 +25,13 @@ const routes: Routes = [
  { path: 'register', component:RegisterComponent },
  { path: 'forgotpassword', component: ForgotpasswordComponent },
  { path: 'resetpassword', component: ResetpasswordComponent },
- { path:'dashboard', component:DashboardComponent, canActivate: [AuthGuard]},
+ 
+ { path:'dashboard', component:DashboardComponent, canActivate: [AuthGuard],children:[
+   {path:'getnote',component:GetnoteComponent},
+   {path:'',component:GetnoteComponent},
+   {path:'archive',component:ArchiveComponent},
+   {path:'trashnote',component:TrashnoteComponent}
+ ]},
  { path:'demo',component:DemoComponent},
  { path:'icon',component:NoteiconComponent},
  { path:'getnote',component:GetnoteComponent},

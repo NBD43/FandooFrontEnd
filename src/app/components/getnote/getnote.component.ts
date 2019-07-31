@@ -10,7 +10,7 @@ import { DataserviceService } from 'src/app/service/dataservice.service';
   styleUrls: ['./getnote.component.scss']
 })
 export class GetnoteComponent implements OnInit {
-path:String ="http://localhost:8080/user/note/getAllNotes/";
+path:String ="http://localhost:8080/user/note/notes/";
 token:String=localStorage.getItem('token');
 notesArray : any[] = [];
 message:String;
@@ -69,9 +69,11 @@ message:String;
     
     const dialogRef = this.dialog.open(NoteeditComponent,
       {
-        panelClass:'myapp-no-padding-dialog',
-         width: '60vw',
-         height:'20vh',
+        
+        panelClass:'update-dialog',
+         width: '50%',
+         height:'fit-content',
+         
         data:{
           noteId:data.noteId,
           color:data.colour,

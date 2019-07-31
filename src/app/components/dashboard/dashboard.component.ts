@@ -133,7 +133,7 @@ export class DashboardComponent implements OnInit {
 
   onArchive(){
     alert("Archieve Notes are Here");
-    this.router.navigate(['/archive'])
+    this.router.navigate(['/dashboard/archive'])
 
   }
 

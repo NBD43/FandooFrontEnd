@@ -59,6 +59,14 @@ export class HttpService {
       });
     }
 
+    public getNotesArchive(url){
+      return this.http.get(url,{
+        headers:{
+          "token":localStorage.getItem('token')
+        }
+      });
+    }
+
     public noteColorChanger(url,data){
       console.log(url,data);
       

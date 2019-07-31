@@ -9,4 +9,10 @@
         </mat-menu>
         <mat-icon (click)="addImageToNote()">image</mat-icon> 
         <mat-icon (click)="addArchive(noteDetails)">archive</mat-icon>
+        <mat-icon [matMenuTriggerFor]="belowMenu" >more_vert</mat-icon>  
 </div>
+
+        <mat-menu #belowMenu="matMenu" yPosition="below">
+                 <button mat-menu-item>delete note</button>
+                 <button mat-menu-item>Add Label</button>
+         </mat-menu>
