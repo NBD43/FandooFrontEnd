@@ -8,6 +8,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {DemoComponent} from '../demo/demo.component'
 import { Note } from 'src/app/model/note';
 import { DataserviceService } from 'src/app/service/dataservice.service';
+import { LabelComponent } from '../label/label.component';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -127,7 +128,11 @@ export class DashboardComponent implements OnInit {
   }
 
   onEditLabel(){
-    alert("EditLabel for Notes");
+    const dialogRef = this.dialog.open(LabelComponent,
+      {
+        width: '200px',
+        height:'fit-content'
+      });
 
   }
 

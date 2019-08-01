@@ -9,11 +9,11 @@
       
           <mat-card-footer> 
              <div class="cardFooterIcons" fxLayout="row" fxLayoutAlign="space-evenly center" >
-                <app-noteicon (color)="receiveColor(color)"(colorChanged)="changedColor(color)" [noteDetails]="item" ></app-noteicon>
-               
+                <app-noteicon (color)="receiveColor(color)"(colorChanged)="changedColor(color)" (archiveChanged)="changedArchive()" [noteDetails]="item" ></app-noteicon>
+<!--                
                 <span><mat-icon>undo</mat-icon>  </span>
                 <span> <mat-icon>redo</mat-icon> </span>
-                <span><button mat-button (click)="addNote()" (click)="matBoolean = !matBoolean">Close</button></span>
+                <span><button mat-button (click)="addNote()" (click)="matBoolean = !matBoolean">Close</button></span> -->
 
               </div>
            </mat-card-footer>

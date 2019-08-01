@@ -14,7 +14,7 @@ export class NoteiconComponent implements OnInit {
 
   @Input() noteDetails:any;
   @Output() colorChanged : EventEmitter<any> = new EventEmitter();
-
+  @Output() archiveChanged:EventEmitter<any> = new EventEmitter();
   constructor(private httpService:HttpService) { }
 
   ngOnInit() {
@@ -31,8 +31,14 @@ export class NoteiconComponent implements OnInit {
     alert("collaborate notewith other user");
   }
 
-  noteColorChanger(){
-    alert("note color changer");
+  deleteNote(note){
+
+    var url="note/trash?noteId="+note.noteId
+    this.httpService.archiveUnarchivenote(url,note).subscribe((response:any)=>{
+      console.log(response);
+      this.archiveChanged.emit();
+    });
+
   }
 
   addImageToNote(){
@@ -46,6 +52,7 @@ export class NoteiconComponent implements OnInit {
     var url="note/archive?noteId="+note.noteId
     this.httpService.archiveUnarchivenote(url,note).subscribe((response:any)=>{
       console.log(response);
+      this.archiveChanged.emit();
     });
 
 

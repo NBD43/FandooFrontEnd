@@ -45,6 +45,9 @@ export class ArchiveComponent implements OnInit {
       this.getcolor = color;
       this.getAllArchive();
     }
+    changedArchive(){
+      this.getAllArchive();
+    }
   
     getAllArchive(){
       this.notesArchArray=[]

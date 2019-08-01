@@ -53,6 +53,10 @@ message:String;
     this.getAllNotes();
   }
 
+  changedArchive(){
+    this.getAllNotes();
+  }
+
   getAllNotes(){
     this.notesArray=[]
   this.httpService.getNotes(this.path).subscribe((res:any)=>{

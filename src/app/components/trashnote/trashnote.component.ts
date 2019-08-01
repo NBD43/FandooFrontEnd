@@ -11,9 +11,9 @@ import { DataserviceService } from 'src/app/service/dataservice.service';
 })
 export class TrashnoteComponent implements OnInit {
 
-  path1:String ="http://localhost:8080/user/note/getAllArchive/";
+  path1:String ="http://localhost:8080/user/note/trashNotes/";
   token:String=localStorage.getItem('token');
-  notesArchArray : any[] = [];
+  notesTrashArray : any[] = [];
   message:String;
     constructor( private httpService:HttpService,private dialog: MatDialog,private dataService:DataserviceService) {
     }
@@ -35,62 +35,49 @@ export class TrashnoteComponent implements OnInit {
   
     
     }
-    getcolor :string;
-    receiveColor(color){
-      this.getcolor = color;
-      this.getAllArchive()
+   
   
-    }
-    changedColor(color){
-      this.getcolor = color;
+    
+    
+    changedArchive(){
       this.getAllArchive();
     }
   
     getAllArchive(){
-      this.notesArchArray=[]
+      this.notesTrashArray=[]
     this.httpService.getNotesArchive(this.path1).subscribe((res:any)=>{
       console.log('get all Archive notes response',res);
       res.forEach((card:any)=>{
-        this.notesArchArray.push(card);
+        this.notesTrashArray.push(card);
       })
     });
     }
+
+
+    deleteNote(note){
+
+      var url="note/trash?noteId="+note.noteId;
+      this.httpService.archiveUnarchivenote(url,note).subscribe((response:any)=>{
+        console.log(response);
+        this.getAllArchive();
+      });
   
-    onEdit(data){
-      console.log(data);
-      alert(data);
-      
-      const dialogRef = this.dialog.open(NoteeditComponent,
-        {
-          panelClass:'myapp-no-padding-dialog',
-           width: '60vw',
-           height:'20vh',
-          data:{
-            noteId:data.noteId,
-            color:data.colour,
-            title:data.title,
-            description:data.description
-          }
-        });
-    
-        dialogRef.afterClosed().subscribe(
-          (data2:any) =>
-          {
-            if(data2!=null)
-            { 
-              console.log(data2)
-              this.httpService.editnote('note/update?noteId='+data.noteId,data2).subscribe(
-              value =>
-              {
-                console.log(value);
-                this.onRefresh();
-              
-              }
-            );
-            }
-      })
+    }
+
+    deletePermanently(note){
+      console.log(note);
+      var url="note/delete?noteId="+note.noteId;
+      this.httpService.deleteNote(url).subscribe(
+        (response:any)=>{
+          console.log(response);
+          this.getAllArchive();
+          
+        }
+      )
       
     }
+  
+    
     
   
   }

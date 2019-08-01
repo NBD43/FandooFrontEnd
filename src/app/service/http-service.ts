@@ -95,6 +95,16 @@ export class HttpService {
       }
       });
     }
+
+    public deleteNote(url){
+      console.log(url);
+      
+      return this.http.delete(this.baseurl+url,{
+       headers:{
+        'token':localStorage.getItem('token')
+      }
+      });
+    }
   
     
 }

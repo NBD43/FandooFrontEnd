@@ -1,19 +1,21 @@
 <div fxLayout="row wrap" fxLayoutAlign="center center">
-    <mat-card class="getNoteDiv"  *ngFor="let item of notesArchArray" [ngStyle]="{'background': item.colour}">
+    <mat-card class="getNoteDiv"  *ngFor="let item of notesTrashArray" [ngStyle]="{'background': item.colour}">
 
-        <mat-card-content (click)=onEdit(item)>
+        <mat-card-content >
            <p> {{ item.title }} </p>
            <p> {{ item.description}} </p>
       </mat-card-content>
   
   
       <mat-card-footer> 
-         <div class="cardFooterIcons" fxLayout="row" fxLayoutAlign="space-evenly center" >
-            <app-noteicon (color)="receiveColor(color)"(colorChanged)="changedColor(color)" [noteDetails]="item" ></app-noteicon>
+         <div class="cardFooterIcons" fxLayout="row" fxLayoutAlign="start center" >
            
-            <span><mat-icon>undo</mat-icon>  </span>
-            <span> <mat-icon>redo</mat-icon> </span>
-            <span><button mat-button (click)="addNote()" (click)="matBoolean = !matBoolean">Close</button></span>
+            <mat-icon [matMenuTriggerFor]="belowMenu" >more_vert</mat-icon>
+            <mat-menu #belowMenu="matMenu" yPosition="below">
+               <button mat-menu-item (click)="deleteNote(item)">Restore</button>
+               <button mat-menu-item (click)="deletePermanently(item)">delete permanently</button>
+             </mat-menu>
+            
 
           </div>
        </mat-card-footer>
