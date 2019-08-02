@@ -13,6 +13,7 @@ export class GetnoteComponent implements OnInit {
 path:String ="http://localhost:8080/user/note/notes/";
 token:String=localStorage.getItem('token');
 notesArray : any[] = [];
+pinnedArray : any[] = [];
 message:String;
   constructor( private httpService:HttpService,private dialog: MatDialog,private dataService:DataserviceService) {
   }
@@ -36,6 +37,7 @@ message:String;
       response => {
         this.message = response;
         this.getAllNotes();
+        this.getAllPinned();
         //this.NoteLabel();
         //this.updateColor();
       })
@@ -57,12 +59,33 @@ message:String;
     this.getAllNotes();
   }
 
+  onPin(note){
+    console.log(note)
+    var url="note/pin?noteId="+note.noteId
+    this.httpService.pinUnpin(url,note).subscribe((response:any)=>{
+      this.getAllNotes();
+      this.getAllPinned();
+      console.log(response);
+   });
+  }
+
   getAllNotes(){
     this.notesArray=[]
   this.httpService.getNotes(this.path).subscribe((res:any)=>{
     console.log('get all notes response',res);
     res.forEach((card:any)=>{
       this.notesArray.push(card);
+    })
+  });
+  }
+
+  getAllPinned(){
+    this.pinnedArray=[]
+    var url="http://localhost:8080/user/note/pinnedNotes"
+  this.httpService.getNotes(url).subscribe((res:any)=>{
+    console.log('get all pinned response',res);
+    res.forEach((card:any)=>{
+      this.pinnedArray.push(card);
     })
   });
   }

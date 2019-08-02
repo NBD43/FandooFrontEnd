@@ -60,7 +60,11 @@
                    <div fxLayout="column"  fxLayoutAlign="center start "  >
         <div routerLink="getnote"  style="width: 200px; height: 50px"  fxLayout="row" fxLayoutAlign="space-evenly center"> <mat-icon >lightbulb_outline</mat-icon>NOTES </div>
         <div (click)="onReminder()" style="width: 200px; height: 50px;  border-bottom:1px solid black" fxLayout="row" fxLayoutAlign="space-evenly center">  <mat-icon >notifications</mat-icon>Reminder </div>
-        <div  style="width: 250px; height: 50px;" fxLayout="row" fxLayoutAlign="start center"><b>Labels</b></div>
+        <div  style="width: 200px; height: 50px;" fxLayout="row" fxLayoutAlign="start center"><b>Labels</b></div>
+
+        <div fxLayout="column" style="width: 200px" fxLayoutAlign="space-between center" >
+            <div *ngFor="let label of labelArray" fxLayout="row" style="width: 100%" fxLayoutAlign="space-around center">  <div><mat-icon>label</mat-icon></div> <div>  {{ label.labelName}} </div> </div> 
+        </div>
         <div (click)="onEditLabel()" style="width: 200px; height: 50px; border-bottom:1px solid black"  fxLayout="row" fxLayoutAlign="space-evenly center"><mat-icon >create</mat-icon>EditLabel </div>
         <div style="width: 200px; height: 50px" fxLayout="row" routerLink="archive" fxLayoutAlign="space-evenly center"> <mat-icon >archive</mat-icon>Archive </div>
         <div  style="width: 200px; height: 50px" fxLayout="row"routerLink="trashnote" fxLayoutAlign="space-evenly center"> <mat-icon >delete</mat-icon>Trash </div>

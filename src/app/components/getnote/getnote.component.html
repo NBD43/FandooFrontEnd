@@ -1,6 +1,6 @@
 <div fxLayout="row wrap" fxLayoutAlign="center center">
         <mat-card class="getNoteDiv"  *ngFor="let item of notesArray" [ngStyle]="{'background': item.colour}">
-
+            <div fxLayout="row wrap" fxLayoutAlign="end center" ><img src="../../../assets/images/svg/unpin.svg" (click)=onPin(item)  alt="pinned"></div>
             <mat-card-content (click)=onEdit(item)>
                <p> {{ item.title }} </p>
                <p> {{ item.description}} </p>
@@ -19,5 +19,30 @@
            </mat-card-footer>
          </mat-card>
        </div>
+       
+       
+       <h2>pinned Notes</h2>
 
+       <div fxLayout="row wrap" fxLayoutAlign="start end">
+         <mat-card class="getNoteDiv"  *ngFor="let item of pinnedArray" [ngStyle]="{'background': item.colour}">
+               <div fxLayout="row wrap" fxLayoutAlign="end center" ><img src="../../../assets/images/svg/pin.svg" (click)=onPin(item) alt="pinned"></div>
+             <mat-card-content (click)=onEdit(item)>
+                
+                <p> {{ item.title }}     </p>
+                <p> {{ item.description}} </p>
+           </mat-card-content>
+       
+       
+           <mat-card-footer> 
+              <div class="cardFooterIcons" fxLayout="row" fxLayoutAlign="space-evenly center" >
+                 <app-noteicon (color)="receiveColor(color)"(colorChanged)="changedColor(color)" (archiveChanged)="changedArchive()" [noteDetails]="item" ></app-noteicon>
+ <!--                
+                 <span><mat-icon>undo</mat-icon>  </span>
+                 <span> <mat-icon>redo</mat-icon> </span>
+                 <span><button mat-button (click)="addNote()" (click)="matBoolean = !matBoolean">Close</button></span> -->
+ 
+               </div>
+            </mat-card-footer>
+          </mat-card>
+        </div>
      

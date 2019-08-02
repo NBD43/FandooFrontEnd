@@ -17,7 +17,7 @@ import { LabelComponent } from '../label/label.component';
 export class DashboardComponent implements OnInit {
 
   note : Note = new Note();
-
+  labelArray : any[] = [];
   email:any;
   token:any;
   profile:string;
@@ -46,6 +46,7 @@ export class DashboardComponent implements OnInit {
   }
   
   ngOnInit() {
+    this.getAllLabels();
     this.dataService.currentMessage.subscribe(message => this.message = message)
     this.token=localStorage.getItem('token')
     this.email=localStorage.getItem('emailId')
@@ -125,6 +126,18 @@ export class DashboardComponent implements OnInit {
   onReminder(){
     alert("Reminder Notes");
 
+  }
+
+
+  getAllLabels(){
+    var path="http://localhost:8080/user/label/getlabel";
+    this.labelArray=[]
+  this.httpService.getNotes(path).subscribe((res:any)=>{
+    console.log('get all label response',res);
+    res.forEach((card:any)=>{
+      this.labelArray.push(card);
+    })
+  });
   }
 
   onEditLabel(){

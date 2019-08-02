@@ -105,6 +105,17 @@ export class HttpService {
       }
       });
     }
+
+    public pinUnpin(url,note){
+      console.log(url);
+      
+      return this.http.put(this.baseurl+url,note,{
+       headers:{
+        'token':localStorage.getItem('token')
+        
+      }
+      });
+    }
   
     
 }
