@@ -10,7 +10,7 @@ import { DataserviceService } from 'src/app/service/dataservice.service';
   styleUrls: ['./getnote.component.scss']
 })
 export class GetnoteComponent implements OnInit {
-path:String ="http://localhost:8080/user/note/notes/";
+path:String ="http://localhost:8080/user/note/notes";
 token:String=localStorage.getItem('token');
 notesArray : any[] = [];
 pinnedArray : any[] = [];
@@ -71,6 +71,7 @@ message:String;
 
   getAllNotes(){
     this.notesArray=[]
+    console.log("response is =========>", this.path)
   this.httpService.getNotes(this.path).subscribe((res:any)=>{
     console.log('get all notes response',res);
     res.forEach((card:any)=>{

@@ -143,7 +143,6 @@ export class DashboardComponent implements OnInit {
   onEditLabel(){
     const dialogRef = this.dialog.open(LabelComponent,
       {
-        width: '200px',
         height:'fit-content'
       });
 

@@ -116,6 +116,28 @@ export class HttpService {
       }
       });
     }
+
+    //###label function services
+
+    public createLabel(url,data){
+      return this.http.post(this.baseurl+url,data,{
+        headers:{
+         'token':localStorage.getItem('token')
+         
+       }
+       });
+
+    }
+
+    public deleteLabel(url){
+      return this.http.delete(this.baseurl+url,{
+        headers:{
+         'token':localStorage.getItem('token')
+         
+       }
+       });
+
+    }
   
     
 }

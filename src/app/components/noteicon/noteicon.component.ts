@@ -73,4 +73,9 @@ export class NoteiconComponent implements OnInit {
       
     });
   }
+
+  addLabel(noteDetails){
+    console.log(this.noteDetails);
+    
+  }
 }

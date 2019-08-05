@@ -1,5 +1,5 @@
 <div fxLayout="row wrap" fxLayoutAlign="center center">
-        <mat-card class="getNoteDiv"  *ngFor="let item of notesArray" [ngStyle]="{'background': item.colour}">
+        <mat-card class="getNoteDiv"  *ngFor="let item of notesArray" [ngStyle]="{'background': item.colour}" cdkDrag>
             <div fxLayout="row wrap" fxLayoutAlign="end center" ><img src="../../../assets/images/svg/unpin.svg" (click)=onPin(item)  alt="pinned"></div>
             <mat-card-content (click)=onEdit(item)>
                <p> {{ item.title }} </p>
