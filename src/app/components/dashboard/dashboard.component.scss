@@ -48,3 +48,24 @@
   font-size: 20px;
   color: rgba($color: #000000, $alpha: 0.6);
 }
+.nav-div{
+  width: 80%;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  height: 50px;
+  font-size: large;
+  outline-width: 0;
+
+}
+.nav-div:hover{
+  background-color: lightgray;
+}
+.nav-div:focus{
+  background-color: #fcefc4;
+}
+
+.nav-note-reminder{
+  border: solid transparent;
+    border-width: 1px 1px 1px 6px;
+
+}

@@ -4,15 +4,15 @@
 <mat-card [style.background]="data.color"  style="width: 96%;height: fit-content;overflow:hidden;" >
     <mat-dialog-content>
         <mat-card-content >
-           <p> <input  [style.background]="noteColor" style="border: none;margin-left: 9px; outline: none; background: whitesmoke"fxFlex='80%' autocomplete="off"  matInput aria-placeholder="Title" [formControl]="title"></p>
-           <p> <input [style.background]="noteColor"  style="border: none;margin-left: 9px; outline: none; background: whitesmoke"fxFlex='80%' autocomplete="off"  matInput placeholder="Take a Note..." [formControl]="description"></p>
+           <p> <textarea class="text-area-style"  [style.background]="noteColor" style="border: none;margin-left: 9px; outline: none; background: whitesmoke"fxFlex='80%' autocomplete="off"  matInput aria-placeholder="Title" [formControl]="title"></textarea></p>
+           <p> <textarea class="text-area-style" [style.background]="noteColor"  style="border: none;margin-left: 9px; outline: none; background: whitesmoke"fxFlex='80%' autocomplete="off"  matInput placeholder="Take a Note..." [formControl]="description"></textarea></p>
       </mat-card-content>
     </mat-dialog-content>
   
       <mat-card-footer> 
          <div class="cardFooterIcons" fxLayout="row" fxLayoutAlign="space-evenly center" >
             <app-noteicon [noteDetails]="data.noteId"></app-noteicon>
-            <span><mat-icon>more_vert</mat-icon>  </span>
+            
             <span><mat-icon>undo</mat-icon>  </span>
             <span> <mat-icon>redo</mat-icon> </span>
             <span><button mat-button (click)="update()">Close</button></span>

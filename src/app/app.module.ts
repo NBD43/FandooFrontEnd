@@ -32,6 +32,7 @@ import { TrashnoteComponent } from './components/trashnote/trashnote.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

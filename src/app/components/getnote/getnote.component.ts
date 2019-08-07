@@ -3,6 +3,11 @@ import { HttpService } from 'src/app/service/http-service';
 import { NoteeditComponent } from '../noteedit/noteedit.component';
 import {MatDialog} from '@angular/material/dialog';
 import { DataserviceService } from 'src/app/service/dataservice.service';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { FormControl, Validators } from '@angular/forms';
+import { Note } from 'src/app/model/note';
+import {MatInputModule} from '@angular/material/input';
+
 
 @Component({
   selector: 'app-getnote',
@@ -15,6 +20,10 @@ token:String=localStorage.getItem('token');
 notesArray : any[] = [];
 pinnedArray : any[] = [];
 message:String;
+note : Note = new Note();
+matBoolean : boolean = false;
+title = new FormControl('',Validators.required);
+description = new FormControl('',Validators.required);
   constructor( private httpService:HttpService,private dialog: MatDialog,private dataService:DataserviceService) {
   }
 
@@ -127,6 +136,32 @@ message:String;
           }
     })
     
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.notesArray, event.previousIndex, event.currentIndex);
+  }
+
+  addNote(){
+    if(this.title.value == null && this.description.value == null){
+      return false
+    }
+    else{
+      this.note.title = this.title.value;
+      this.note.description = this.description.value;
+      var data ={
+        "title":this.note.title,
+        "description":this.note.description
+      }
+      var url ='note/create';
+      this.httpService.createNote(url,data,this.token).subscribe((response:any)=>{
+       
+        console.log('add note response ',response);
+        this.dataService.changeMessage('change');
+        
+      });
+    }
+   
   }
   
 

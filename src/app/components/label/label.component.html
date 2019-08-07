@@ -1,17 +1,25 @@
-
-
-
 <h2 mat-dialog-title>EditLabel</h2>
 <mat-dialog-content class="mat-typography">
-        <span> <mat-icon>add</mat-icon> </span>    <input style="border: none;" fxFlex='30' autocomplete="off"  matInput placeholder="create label"  [formControl]="labelName"><span> <mat-icon (click)="create()">done</mat-icon> </span>
-  
+  <span>
+    <mat-icon>add</mat-icon>
+  </span> <input style="border: none;" fxFlex='30' autocomplete="off" matInput placeholder="create label"
+    [formControl]="labelName"><span>
+    <mat-icon (click)="create()">done</mat-icon>
+  </span>
+
 </mat-dialog-content>
 <div fxLayout="column" fxLayoutAlign="center start">
-    <div fxLayout="row" (mouseover)="this.changeIcon = true" (mouseout)="this.changeIcon = false"  *ngFor="let label of labelArray"> <span> <mat-icon *ngIf="!changeIcon"  >label</mat-icon> <mat-icon (click)="labelDelete(label)" *ngIf="changeIcon">delete</mat-icon> </span> <span> <input matInput style="border: none;outline:none;text-decoration: none" autocomplete="off"  value="{{ label.labelName}}"  [formControl]="editLabel"></span> <span><mat-icon (click)="labelEdit(label)">create</mat-icon></span></div> 
-    
+  <div  fxLayout="row" (mouseover)="this.changeIcon = true" (mouseout)="this.changeIcon = false"
+    *ngFor="let label of labelArray"> <span>
+      <mat-icon *ngIf="!changeIcon">label</mat-icon>
+      <mat-icon (click)="labelDelete(label)" *ngIf="changeIcon">delete</mat-icon>
+    </span> <span> <input matInput style="border: none;outline:none;text-decoration: none" autocomplete="off"
+        value="{{ label.labelName}}" [formControl]="editLabel"></span> <span>
+      <mat-icon (click)="labelEdit(label)">create</mat-icon>
+    </span></div>
+
 </div>
 <mat-dialog-actions align="end">
-  
+
   <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Done</button>
 </mat-dialog-actions>
-

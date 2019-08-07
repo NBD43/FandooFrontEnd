@@ -1,4 +1,37 @@
-<div fxLayout="row wrap" fxLayoutAlign="center center">
+<div>
+   <div fxLayout="row" fxLayoutAlign="center center">
+      <mat-card style="width: 30%">
+        <p> <input *ngIf="!matBoolean" (click)="matBoolean = !matBoolean" style="border: none;margin-left: 9px; outline: none; background: whitesmoke"fxFlex='80' autocomplete="off"  matInput placeholder="Take a Note..." ></p>
+     </mat-card>
+   </div>
+
+
+   <div fxLayout="row" fxLayoutAlign="center center">
+     <mat-card style="width: 30%" *ngIf="matBoolean" >
+
+         <mat-card-content >
+            <p> <textarea class="text-area-style" fxFlex='80' autocomplete="off"  matInput placeholder="Title" [formControl]="title"></textarea></p>
+            <p> <textarea class="text-area-style" fxFlex='80' autocomplete="off"  matInput placeholder="Take a Note..." [formControl]="description"></textarea></p>
+       </mat-card-content>
+   
+   
+       <mat-card-footer> 
+           <mat-dialog-actions align="end">
+          <div class="cardFooterIcons" fxLayout="row" fxLayoutAlign="space-evenly center" >
+             <app-noteicon></app-noteicon>
+             
+             <span><button mat-button (click)="addNote()" (click)="matBoolean = !matBoolean">Close</button></span>
+
+           </div>
+           </mat-dialog-actions>
+           
+        </mat-card-footer>
+      </mat-card>
+    </div>
+</div>  
+
+
+<div class="get-notes" fxLayout="row wrap" fxLayoutAlign="center center" cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
         <mat-card class="getNoteDiv"  *ngFor="let item of notesArray" [ngStyle]="{'background': item.colour}" cdkDrag>
             <div fxLayout="row wrap" fxLayoutAlign="end center" ><img src="../../../assets/images/svg/unpin.svg" (click)=onPin(item)  alt="pinned"></div>
             <mat-card-content (click)=onEdit(item)>
