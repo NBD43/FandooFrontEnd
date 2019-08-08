@@ -34,9 +34,15 @@
 <div class="get-notes" fxLayout="row wrap" fxLayoutAlign="center center" cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
         <mat-card class="getNoteDiv"  *ngFor="let item of notesArray" [ngStyle]="{'background': item.colour}" cdkDrag>
             <div fxLayout="row wrap" fxLayoutAlign="end center" ><img src="../../../assets/images/svg/unpin.svg" (click)=onPin(item)  alt="pinned"></div>
-            <mat-card-content (click)=onEdit(item)>
+            <mat-card-content (click)="onEdit(item)">
                <p> {{ item.title }} </p>
                <p> {{ item.description}} </p>
+               <div fxLayout="row" fxLayoutGap="10px" *ngIf="item.listLabel.length > 0">
+                  <mat-chip-list *ngFor="let items of item.listLabel"> 
+                     <mat-chip> {{items.labelName}} </mat-chip>
+                  </mat-chip-list>
+               </div>
+      
           </mat-card-content>
       
       

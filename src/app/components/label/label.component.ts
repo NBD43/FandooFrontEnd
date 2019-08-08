@@ -84,7 +84,20 @@ export class LabelComponent implements OnInit {
 
   labelEdit(label){
     console.log(label);
+    if(this.editLabel.value==null){
+      return false;
+    }
     console.log(this.editLabel);
+    var url="label/update?labelId="+label.labelId;
+    var data={
+      "labelName":this.editLabel.value
+    }
+    this.httpService.updateLabel(url,data).subscribe((res:any)=>{
+      console.log(res);
+      this.getAllLabels;
+      
+    }
+    );
     
     
   }

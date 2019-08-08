@@ -137,6 +137,17 @@ export class HttpService {
        }
        });
 
+   
+
+    }
+
+    public updateLabel(url,data){
+      return this.http.put(this.baseurl+ url,data,{
+        headers:{
+          'token':localStorage.getItem('token')
+        }
+      });
+
     }
   
     
