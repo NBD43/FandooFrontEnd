@@ -149,6 +149,24 @@ export class HttpService {
       });
 
     }
+
+    public addLabelToNote(url,data){
+      return this.http.put(this.baseurl+ url,data,{
+        headers:{
+          'token':localStorage.getItem('token')
+        }
+      });
+
+    }
+
+    public removeLabelToNote(url,data){
+      return this.http.put(this.baseurl+ url,data,{
+        headers:{
+          'token':localStorage.getItem('token')
+        }
+      });
+
+    }
   
     
 }

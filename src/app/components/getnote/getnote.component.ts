@@ -163,6 +163,19 @@ description = new FormControl('',Validators.required);
     }
    
   }
+
+  deleteLabel(note,label){
+    console.log(note);
+    console.log(label);
+    var url="label/removelabelfromnote?labelId="+label.labelId+"&noteId="+note.noteId;
+    this.httpService.removeLabelToNote(url,note).subscribe((res:any)=>{
+      console.log(res);
+      this.getAllNotes();
+      
+    });
+    
+
+  }
   
 
 }

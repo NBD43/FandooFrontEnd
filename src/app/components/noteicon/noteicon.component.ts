@@ -7,7 +7,7 @@ import { HttpService } from 'src/app/service/http-service';
   styleUrls: ['./noteicon.component.scss']
 })
 export class NoteiconComponent implements OnInit {
-
+  labelArray : any[] = [];
   colorArray : any[] = [
     "#f06292","#ce93d8","#81D4FA","#FFAB91","#a5d6a7","#bdbdbd","#FFE57F","#00BCD4"
   ]
@@ -19,6 +19,7 @@ export class NoteiconComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.noteDetails);
+    this.getAllLabels();
     
   }
 
@@ -74,8 +75,27 @@ export class NoteiconComponent implements OnInit {
     });
   }
 
-  addLabel(noteDetails){
-    console.log(this.noteDetails);
+  addLabel(note,label){
+    console.log(note);
+    console.log(label);
+
+    var url="label/addlabeltonote?labelId="+label.labelId+"&noteId="+note.noteId;
+    this.httpService.addLabelToNote(url,note).subscribe((res:any)=>{
+      console.log(res);
+      this.archiveChanged.emit();
+    });
     
+    
+  }
+
+  getAllLabels(){
+    var path="http://localhost:8080/user/label/getlabel";
+    this.labelArray=[]
+  this.httpService.getNotes(path).subscribe((res:any)=>{
+    console.log('get all label response',res);
+    res.forEach((card:any)=>{
+      this.labelArray.push(card);
+    })
+  });
   }
 }

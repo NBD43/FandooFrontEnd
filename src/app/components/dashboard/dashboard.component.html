@@ -24,7 +24,7 @@
       
        <div  class ="searchbox"fxFlex="30" fxLayoutAlign="space-between center" style="height: 38px">
               
-                <input style="border: none;margin-left: 9px; outline: none; background: whitesmoke"fxFlex='80' autocomplete="off"  matInput placeholder="Search" [formControl]="emailFormControl">
+                <input style="border: none;margin-left: 9px; outline: none; background: whitesmoke"fxFlex='80' autocomplete="off"  matInput placeholder="Search" [(ngModel)]="searchTerm">
                 <mat-icon >search</mat-icon>
               
            

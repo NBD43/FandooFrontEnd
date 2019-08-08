@@ -14,10 +14,11 @@
 
         <mat-menu #belowMenu="matMenu" yPosition="below">
                  <button mat-menu-item (click)="deleteNote(noteDetails)">delete note</button>
-                 <button mat-menu-item >Add Label</button>
+                 <button mat-menu-item [matMenuTriggerFor]="afterMenu">Add Label</button>
          </mat-menu>
 
-         <!-- <mat-menu #afterMenu="matMenu" yPosition="below">
-                <button mat-menu-item (click)="addLabel(noteDetails)">delete note</button>
+          <mat-menu #afterMenu="matMenu" yPosition="below">
+                <!-- <button mat-menu-item (click)="addLabel(noteDetails)">delete note</button> -->
+                <div *ngFor="let label of labelArray">  <mat-checkbox (click)="addLabel(noteDetails,label) " > {{ label.labelName}} </mat-checkbox>   </div> 
                
-        </mat-menu> -->
+        </mat-menu> 

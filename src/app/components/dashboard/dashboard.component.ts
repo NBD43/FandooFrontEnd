@@ -25,10 +25,11 @@ export class DashboardComponent implements OnInit {
   events: string[] = [];
   matBoolean : boolean = false;
   opened: boolean;
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
+  searchTerm:String;
+  // emailFormControl = new FormControl('', [
+  //   Validators.required,
+  //   Validators.email,
+  // ]);
   message:String;
   constructor(private router:Router,private snackBar: MatSnackBar, private httpService: HttpService,private dialog: MatDialog,private dataService:DataserviceService
     ) { }
