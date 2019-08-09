@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Collaborator</h2>
+<mat-divider style="border: 1px solid rgb(206, 203, 203);width: 100%"></mat-divider>
+
+<mat-dialog-content class="mat-typography">
+    <div fxLayout="row" fxLayoutAlign="space-evenly center" >
+         <span><mat-icon style="font-size: 39px">account_circle</mat-icon></span> <span><textarea class="text-area-style" fxFlex='80' autocomplete="off" matInput placeholder="add Collaborator ...."
+    [formControl]="description" (enter)="addNote()" ></textarea></span>
+    </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Done</button>
+  </mat-dialog-actions>

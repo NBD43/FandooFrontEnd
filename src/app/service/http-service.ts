@@ -59,6 +59,14 @@ export class HttpService {
       });
     }
 
+    public reminderNotes(url){
+      return this.http.get(this.baseurl+url,{
+        headers:{
+          "token":localStorage.getItem('token')
+        }
+      });
+    }
+
     public getNotesArchive(url){
       return this.http.get(url,{
         headers:{

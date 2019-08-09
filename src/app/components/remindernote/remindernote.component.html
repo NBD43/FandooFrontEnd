@@ -1,0 +1,34 @@
+<div fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="start center">
+    <mat-card class="getNoteDiv"  *ngFor="let item of reminderArray" [ngStyle]="{'background': item.colour}">
+
+        <mat-card-content >
+           <p> {{ item.title }} </p>
+           <p> {{ item.description}} </p>
+      
+  
+  
+      <div  fxLayout="row wrap" fxLayoutGap="10px" *ngIf="item.listLabel.length > 0">
+        <mat-chip-list *ngFor="let items of item.listLabel">
+           <mat-chip class="add-label"> {{items.labelName}} <mat-icon (click)="deleteLabel(item,items)"> clear</mat-icon>
+           </mat-chip>
+        </mat-chip-list>
+     </div>
+
+     <div> <mat-chip>{{item.reminder}}</mat-chip> </div>
+
+  </mat-card-content>
+
+
+  <mat-card-footer>
+     <div class="cardFooterIcons" fxLayout="row" fxLayoutAlign="space-evenly center">
+        <app-noteicon (color)="receiveColor(color)" (colorChanged)="changedColor(color)"
+           (archiveChanged)="changedArchive()" [noteDetails]="item"></app-noteicon>
+        <!--                
+            <span><mat-icon>undo</mat-icon>  </span>
+            <span> <mat-icon>redo</mat-icon> </span>
+            <span><button mat-button (click)="addNote()" (click)="matBoolean = !matBoolean">Close</button></span> -->
+
+     </div>
+  </mat-card-footer>
+</mat-card>
+</div>

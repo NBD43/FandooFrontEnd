@@ -28,6 +28,10 @@ import { LabelComponent } from './components/label/label.component';
 import { PracticeComponent } from './components/practice/practice.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { TrashnoteComponent } from './components/trashnote/trashnote.component';
+import { SearchnoteComponent } from './components/searchnote/searchnote.component';
+import { DisplayComponent } from './components/display/display.component';
+import { RemindernoteComponent } from './components/remindernote/remindernote.component';
+import { CollaboratorComponent } from './components/collaborator/collaborator.component';
 //import { ArchiveComponent } from './components/archive/archive.component';
 
 
@@ -49,6 +53,10 @@ import { TrashnoteComponent } from './components/trashnote/trashnote.component';
     PracticeComponent,
     ArchiveComponent,
     TrashnoteComponent,
+    SearchnoteComponent,
+    DisplayComponent,
+    RemindernoteComponent,
+    CollaboratorComponent,
     //ArchiveComponent
     
   ],

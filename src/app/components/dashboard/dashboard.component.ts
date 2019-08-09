@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
 import { HttpService } from 'src/app/service/http-service'
 import { error } from 'util';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {MatDialog} from '@angular/material/dialog';
-import {DemoComponent} from '../demo/demo.component'
+import { MatDialog } from '@angular/material/dialog';
+import { DemoComponent } from '../demo/demo.component'
 import { Note } from 'src/app/model/note';
 import { DataserviceService } from 'src/app/service/dataservice.service';
 import { LabelComponent } from '../label/label.component';
@@ -16,27 +16,27 @@ import { LabelComponent } from '../label/label.component';
 })
 export class DashboardComponent implements OnInit {
 
-  note : Note = new Note();
-  labelArray : any[] = [];
-  email:any;
-  token:any;
-  profile:string;
+  note: Note = new Note();
+  labelArray: any[] = [];
+  email: any;
+  token: any;
+  profile: string;
   fundooTitle = 'FundooNotes';
   events: string[] = [];
-  matBoolean : boolean = false;
+  matBoolean: boolean = false;
   opened: boolean;
-  searchTerm:String;
+  searchKey;
   // emailFormControl = new FormControl('', [
   //   Validators.required,
   //   Validators.email,
   // ]);
-  message:String;
-  constructor(private router:Router,private snackBar: MatSnackBar, private httpService: HttpService,private dialog: MatDialog,private dataService:DataserviceService
-    ) { }
+  message: String;
+  constructor(private router: Router, private snackBar: MatSnackBar, private httpService: HttpService, private dialog: MatDialog, private dataService: DataserviceService
+  ) { }
 
-    title = new FormControl('',Validators.required);
-    description = new FormControl('',Validators.required);
-  
+  title = new FormControl('', Validators.required);
+  description = new FormControl('', Validators.required);
+
 
   openDialog() {
     const dialogRef = this.dialog.open(DemoComponent);
@@ -45,36 +45,50 @@ export class DashboardComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
-  
+
   ngOnInit() {
     this.getAllLabels();
     this.dataService.currentMessage.subscribe(message => this.message = message)
-    this.token=localStorage.getItem('token')
-    this.email=localStorage.getItem('emailId')
+    this.token = localStorage.getItem('token')
+    this.email = localStorage.getItem('emailId')
     console.log(this.token)
     console.log(this.email)
-    
-   
-  
+
+
+
   }
 
-  addNote(){
-    if(this.title.value == null && this.description.value == null){
+
+  search(event: any) {
+    console.log(" search word ", event);
+
+    this.searchKey = event.target.value
+    console.log(" key ", this.searchKey);
+
+    this.router.navigate(['dashboard/searchNote'])
+    // this.dataService.changeMessage({ data: this.searchKey })
+    this.dataService.changeNoteSearch({
+      data: this.searchKey
+    })
+  }
+
+  addNote() {
+    if (this.title.value == null && this.description.value == null) {
       return false
     }
-    else{
+    else {
       this.note.title = this.title.value;
       this.note.description = this.description.value;
-      var data ={
-        "title":this.note.title,
-        "description":this.note.description
+      var data = {
+        "title": this.note.title,
+        "description": this.note.description
       }
-      var url ='note/create';
-      this.httpService.createNote(url,data,this.token).subscribe((response:any)=>{
-        
-        console.log('add note response ',response);
+      var url = 'note/create';
+      this.httpService.createNote(url, data, this.token).subscribe((response: any) => {
+
+        console.log('add note response ', response);
         this.dataService.changeMessage('change');
-        
+
       });
     }
   }
@@ -84,100 +98,97 @@ export class DashboardComponent implements OnInit {
     const dialogRef = this.dialog.open(DemoComponent,
       {
         width: '400px',
-        height:'500px'
+        height: '500px'
       });
-  
-      dialogRef.afterClosed().subscribe(
-        (x:any) =>
-        {
-          if(x!=null)
-          { 
-            console.log("file",x.file)
-            this.httpService.uploadProfileImage('uploadprofile',x.file).subscribe(
-            value =>
-            {
+
+    dialogRef.afterClosed().subscribe(
+      (x: any) => {
+        if (x != null) {
+          console.log("file", x.file)
+          this.httpService.uploadProfileImage('uploadprofile', x.file).subscribe(
+            value => {
               console.log(value);
               this.dataService.changeMessage('rewq');
-             // this.onRefresh();
-            
+              // this.onRefresh();
+
             }
           );
-          }
-    })
-    
-  }
-  
+        }
+      })
 
-  onRefresh(){
+  }
+
+
+  onRefresh() {
     window.location.reload();
   }
-  onlogout(){
+  onlogout() {
     localStorage.clear();
     //localStorage.removeItem('token');
     //localStorage.removeItem('emailId');
-     this.router.navigate(['/login']);
+    this.router.navigate(['/login']);
   }
 
-  onNotes(){
+  onNotes() {
     alert("Notes are here");
     this.router.navigate(['/dashboard'])
 
   }
 
-  onReminder(){
+  onReminder() {
     alert("Reminder Notes");
 
   }
 
 
-  getAllLabels(){
-    var path="http://localhost:8080/user/label/getlabel";
-    this.labelArray=[]
-  this.httpService.getNotes(path).subscribe((res:any)=>{
-    console.log('get all label response',res);
-    res.forEach((card:any)=>{
-      this.labelArray.push(card);
-    })
-  });
+  getAllLabels() {
+    var path = "http://localhost:8080/user/label/getlabel";
+    this.labelArray = []
+    this.httpService.getNotes(path).subscribe((res: any) => {
+      console.log('get all label response', res);
+      res.forEach((card: any) => {
+        this.labelArray.push(card);
+      })
+    });
   }
 
-  onEditLabel(){
+  onEditLabel() {
     const dialogRef = this.dialog.open(LabelComponent,
       {
-        height:'fit-content'
+        height: 'fit-content'
       });
 
   }
 
-  onArchive(){
+  onArchive() {
     alert("Archieve Notes are Here");
     this.router.navigate(['/dashboard/archive'])
 
   }
 
-  onDelete(){
+  onDelete() {
     alert("trash notes are here");
 
   }
-upload(event){
-  console.log("clicked event",event);
+  upload(event) {
+    console.log("clicked event", event);
 
 
-  this.httpService.uploadImage('uploadprofile',this.token,event).subscribe(
-    
+    this.httpService.uploadImage('uploadprofile', this.token, event).subscribe(
+
       (response: any) => {
-        console.warn("thr response");-
-        console.log(response);
-        
+        console.warn("thr response"); -
+          console.log(response);
+
         if (!error && response.statusCode == 200) {
-       
-          localStorage.setItem('token',response.token);
+
+          localStorage.setItem('token', response.token);
           this.snackBar.open(
-            
+
             "profile updated  Successfully",
             "undo",
             { duration: 2500 }
-            
+
           )
           this.router.navigate(['/dashboard'])
         } else {

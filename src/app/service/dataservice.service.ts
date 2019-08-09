@@ -12,4 +12,13 @@ export class DataserviceService {
   changeMessage(message:string){
     this.messageSource.next(message)
 }
+
+
+private searchNote=new BehaviorSubject([]);
+  searchNoteWord=this.searchNote.asObservable();
+
+
+  changeNoteSearch(message:any){
+    this.searchNote.next(message)
+}
 }

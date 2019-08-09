@@ -1,0 +1,31 @@
+<div class="get-notes" fxLayout="row wrap" fxLayoutAlign="center center" cdkDropList class="example-list"
+   (cdkDropListDropped)="drop($event)">
+   <mat-card class="getNoteDiv" *ngFor="let item of searchedNoteCards" [ngStyle]="{'background': item.colour}" cdkDrag>
+      <div fxLayout="row wrap" fxLayoutAlign="end center"><img src="../../../assets/images/svg/unpin.svg"
+            (click)=onPin(item) alt="pinned"></div>
+      <mat-card-content (click)="onEdit(item)">
+         <p> {{ item.title }} </p>
+         <p> {{ item.description}} </p>
+         <div  fxLayout="row wrap" fxLayoutGap="10px" *ngIf="item.listLabel.length > 0">
+            <mat-chip-list *ngFor="let items of item.listLabel">
+               <mat-chip class="add-label"> {{items.labelName}} <mat-icon (click)="deleteLabel(item,items)"> clear</mat-icon>
+               </mat-chip>
+            </mat-chip-list>
+         </div>
+
+      </mat-card-content>
+
+
+      <mat-card-footer>
+         <div class="cardFooterIcons" fxLayout="row" fxLayoutAlign="space-evenly center">
+            <app-noteicon (color)="receiveColor(color)" (colorChanged)="changedColor(color)"
+               (archiveChanged)="changedArchive()" [noteDetails]="item"></app-noteicon>
+            <!--                
+                <span><mat-icon>undo</mat-icon>  </span>
+                <span> <mat-icon>redo</mat-icon> </span>
+                <span><button mat-button (click)="addNote()" (click)="matBoolean = !matBoolean">Close</button></span> -->
+
+         </div>
+      </mat-card-footer>
+   </mat-card>
+</div>

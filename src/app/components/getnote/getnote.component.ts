@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpService } from 'src/app/service/http-service';
 import { NoteeditComponent } from '../noteedit/noteedit.component';
 import {MatDialog} from '@angular/material/dialog';
@@ -20,6 +20,7 @@ token:String=localStorage.getItem('token');
 notesArray : any[] = [];
 pinnedArray : any[] = [];
 message:String;
+@Input()notesArrays
 note : Note = new Note();
 matBoolean : boolean = false;
 title = new FormControl('',Validators.required);

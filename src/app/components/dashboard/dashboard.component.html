@@ -24,7 +24,7 @@
       
        <div  class ="searchbox"fxFlex="30" fxLayoutAlign="space-between center" style="height: 38px">
               
-                <input style="border: none;margin-left: 9px; outline: none; background: whitesmoke"fxFlex='80' autocomplete="off"  matInput placeholder="Search" [(ngModel)]="searchTerm">
+                <input style="border: none;margin-left: 9px; outline: none; background: whitesmoke"fxFlex='80' autocomplete="off" (keyup)="search($event)"  matInput placeholder="Search" >
                 <mat-icon >search</mat-icon>
               
            
@@ -60,15 +60,18 @@
                    <div fxLayout="column"  fxLayoutAlign="center start "  >
         
         <div class="nav-div" routerLink="getnote"  fxLayout="row" fxLayoutAlign="space-evenly center"> <mat-icon >lightbulb_outline</mat-icon>NOTES </div>
-        <div class="nav-div"  (click)="onReminder()"  fxLayout="row" fxLayoutAlign="space-evenly center">  <mat-icon >notifications</mat-icon>Reminder </div>
-                    
+        <div class="nav-div" routerLink="reminderNotes"  fxLayout="row" fxLayoutAlign="space-evenly center">  <mat-icon >notifications</mat-icon>Reminder </div>
+               
+        <mat-divider style="border: 1px solid rgb(206, 203, 203);width: 100%"></mat-divider>
        
         <div  style="width: 200px; height: 50px;" fxLayout="row" fxLayoutAlign="start center"><b>Labels</b></div>
 
-        <div fxLayout="column" style="width: 200px" fxLayoutAlign="space-between start" >
-            <div *ngFor="let label of labelArray" fxLayout="row" style="width: 100%" fxLayoutAlign="space-around center">  <div><mat-icon>label_outline</mat-icon></div> <div style="margin-left: 15px">  {{ label.labelName}} </div> </div> 
+        <div fxLayout="column" style="width: 200px"  fxLayoutAlign="space-between start">
+            <div  *ngFor="let label of labelArray" fxLayout="row" fxLayoutGap="20%" style="width: 100%;">  <div fxFlexOffset="20"><mat-icon>label_outline</mat-icon></div> <div>  {{ label.labelName}} </div> </div> 
         </div>
         <div class="nav-div" (click)="onEditLabel()"  fxLayout="row" fxLayoutAlign="space-evenly center"><mat-icon >create</mat-icon>EditLabel </div>
+        
+        <mat-divider style="border: 1px solid rgb(206, 203, 203);width: 100%"></mat-divider>
         <div class="nav-div"  fxLayout="row" routerLink="archive" fxLayoutAlign="space-evenly center"> <mat-icon >archive</mat-icon>Archive </div>
         <div class="nav-div"   fxLayout="row"routerLink="trashnote" fxLayoutAlign="space-evenly center"> <mat-icon >delete</mat-icon>Trash </div>
       </div>

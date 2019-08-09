@@ -15,7 +15,7 @@
             <p> <textarea class="text-area-style" fxFlex='80' autocomplete="off" matInput placeholder="Title"
                   [formControl]="title"></textarea></p>
             <p> <textarea class="text-area-style" fxFlex='80' autocomplete="off" matInput placeholder="Take a Note..."
-                  [formControl]="description"></textarea></p>
+                  [formControl]="description" (enter)="addNote()" ></textarea></p>
          </mat-card-content>
 
 
