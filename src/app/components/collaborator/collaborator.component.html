@@ -2,13 +2,30 @@
 <mat-divider style="border: 1px solid rgb(206, 203, 203);width: 100%"></mat-divider>
 
 <mat-dialog-content class="mat-typography">
-    <div fxLayout="row" fxLayoutAlign="space-evenly center" >
-         <span><mat-icon style="font-size: 39px">account_circle</mat-icon></span> <span><textarea class="text-area-style" fxFlex='80' autocomplete="off" matInput placeholder="add Collaborator ...."
-    [formControl]="description" (enter)="addNote()" ></textarea></span>
-    </div>
+
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5%"  >
+                <span><img style="width: 39px;
+                    height: 39px;
+                    border-radius: 11px;" src="http://localhost:8080/user/getprofilepic/{{token}}" ></span> <span>{{email}}</span> <span>(owner)</span>
+           </div>
+
+           <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5%" *ngFor="let item of collaborators" >
+                <span><mat-icon style="font-size: 39px">account_circle</mat-icon></span> <span>{{item.emailId}}</span><span><mat-icon  (click)="removeCollaborator(item.emailId)">clear</mat-icon></span>
+           </div>
+
+
+
+           <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5%"  >
+                <span><mat-icon style="font-size: 39px">account_circle</mat-icon></span> <span><textarea class="text-area-style" fxFlex='100' autocomplete="off" matInput placeholder="add Collaborator ...."
+                    [formControl]="colabEmail" (keyup.enter)="addcollaborator()" ></textarea></span>
+           </div>
+
+    
 
 </mat-dialog-content>
-<mat-dialog-actions align="end">
+<!-- <mat-divider style="border: 1px solid rgb(206, 203, 203);width: 100%"></mat-divider> -->
+
+<mat-dialog-actions align="end" style="background-color: whitesmoke">
     <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Done</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>save</button>
   </mat-dialog-actions>

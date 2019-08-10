@@ -175,6 +175,22 @@ export class HttpService {
       });
 
     }
+
+    public addCollaboratore(url,data){
+      return this.http.post(this.baseurl+ url,data,{
+        headers:{
+          'token':localStorage.getItem('token')
+        }
+      });
+    }
+
+    public removeCollaboratore(url){
+      return this.http.delete(this.baseurl+ url,{
+        headers:{
+          'token':localStorage.getItem('token')
+        }
+      });
+    }
   
     
 }

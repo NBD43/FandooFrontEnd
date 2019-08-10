@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { HttpService } from 'src/app/service/http-service';
+import { CollaboratorComponent } from '../collaborator/collaborator.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-noteicon',
@@ -15,7 +17,7 @@ export class NoteiconComponent implements OnInit {
   @Input() noteDetails:any;
   @Output() colorChanged : EventEmitter<any> = new EventEmitter();
   @Output() archiveChanged:EventEmitter<any> = new EventEmitter();
-  constructor(private httpService:HttpService) { }
+  constructor(private httpService:HttpService,private dialog: MatDialog) { }
 
   ngOnInit() {
     console.log(this.noteDetails);
@@ -29,7 +31,14 @@ export class NoteiconComponent implements OnInit {
   }
 
   onCollaborator(){
-    alert("collaborate notewith other user");
+    //alert("collaborate notewith other user");
+    //var data=this.noteDetails;
+    const dialogRef = this.dialog.open(CollaboratorComponent,
+      {
+        width: '400px',
+        height: 'fit-content',
+        data: this.noteDetails
+      });
   }
 
   deleteNote(note){

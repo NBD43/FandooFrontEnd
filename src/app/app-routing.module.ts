@@ -38,7 +38,9 @@ const routes: Routes = [
       { path: 'archive', component: ArchiveComponent },
       { path: 'trashnote', component: TrashnoteComponent },
       { path: 'searchNote', component: SearchnoteComponent },
-      { path: 'reminderNotes', component: RemindernoteComponent }
+      { path: 'reminderNotes', component: RemindernoteComponent },
+      { path: 'collaborator', component: CollaboratorComponent }
+
       
 
     ]
@@ -54,11 +56,7 @@ const routes: Routes = [
   },
   {
     path: 'practice', component: PracticeComponent
-  },
-  {
-    path: 'collaborator', component: CollaboratorComponent
   }
-
 
 
 

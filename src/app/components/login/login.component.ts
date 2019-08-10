@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
         if (!error && response.statusCode == 200) {
        
           localStorage.setItem('token',response.token);
+          localStorage.setItem('emailId',response.emailId)
           this.snackBar.open(
             
             "Login Successfully",
