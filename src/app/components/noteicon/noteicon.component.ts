@@ -107,4 +107,21 @@ export class NoteiconComponent implements OnInit {
     })
   });
   }
+
+  today(noteDetails){
+    console.log(noteDetails);
+    var url="note/reminder?noteId="+noteDetails;
+    var d = new Date(); 
+    // var localdate=d.toLocaleString().replace('/',':').replace('/',':').replace(',',' ')
+    // console.log( d.toLocaleString().replace('/',':').replace('/',':').replace(',',' ') );
+    console.log(d.toLocaleDateString().replace('/',':').replace('/',':') + " "+"20:58:04");
+    
+    
+    
+    
+
+
+
+    
+  }
 }

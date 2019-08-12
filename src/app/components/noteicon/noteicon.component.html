@@ -1,5 +1,7 @@
 <div class="icons" [ngStyle]="{'background':itemcolor}" fxLayout="row" fxLayoutAlign="space-around center">
-        <mat-icon (click)="onReminder()">add_alert</mat-icon>
+        <mat-icon  [matMenuTriggerFor]="reminderMenu">add_alert</mat-icon>
+
+
         <mat-icon (click)="onCollaborator()">person_add</mat-icon> 
         <mat-icon  [matMenuTriggerFor]="aboveMenu">color_lens</mat-icon>
         <mat-menu  #aboveMenu="matMenu" >
@@ -11,6 +13,14 @@
         <mat-icon (click)="addArchive(noteDetails)">archive</mat-icon>
         <mat-icon [matMenuTriggerFor]="belowMenu" >more_vert</mat-icon>  
 </div>
+
+        <mat-menu #reminderMenu="matMenu" yPosition="below" style="width: 100px">
+                <button mat-menu-item (click)="today(noteDetails)">Today        8:00pm </button>
+                <button mat-menu-item (click)="tmmro(noteDetails)">Tomorrow      8:00am</button>
+                <button mat-menu-item (click)="nextWeek(noteDetails)">NextWeek   8:00am</button>
+                <button mat-menu-item (click)="dateTimePicker(noteDetails)">date dateTimePicker </button>
+                
+        </mat-menu>
 
         <mat-menu #belowMenu="matMenu" yPosition="below">
                  <button mat-menu-item (click)="deleteNote(noteDetails)">delete note</button>

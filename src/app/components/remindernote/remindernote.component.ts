@@ -64,6 +64,19 @@ export class RemindernoteComponent implements OnInit {
   
     }
 
+    removeReminder(note){
+      console.log(note);
+
+      var url="note/removeReminder?noteId="+note.noteId;
+      this.httpService.removeReminder(url,note).subscribe((response:any)=>{
+        console.log(response);
+        this.ReminderNotes();
+        
+      })
+      
+
+    }
+
    
   
 

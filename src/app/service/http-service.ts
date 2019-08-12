@@ -125,6 +125,18 @@ export class HttpService {
       });
     }
 
+    public removeReminder(url,data){
+      console.log(url);
+      
+      return this.http.put(this.baseurl+url,data,{
+       headers:{
+        'token':localStorage.getItem('token')
+      }
+      });
+    }
+
+
+
     //###label function services
 
     public createLabel(url,data){
