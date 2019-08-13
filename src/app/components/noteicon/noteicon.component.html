@@ -14,13 +14,32 @@
         <mat-icon [matMenuTriggerFor]="belowMenu" >more_vert</mat-icon>  
 </div>
 
-        <mat-menu #reminderMenu="matMenu" yPosition="below" style="width: 100px">
+        <mat-menu #reminderMenu="matMenu" yPosition="below" style="width: 100%">
                 <button mat-menu-item (click)="today(noteDetails)">Today        8:00pm </button>
-                <button mat-menu-item (click)="tmmro(noteDetails)">Tomorrow      8:00am</button>
+                <button mat-menu-item (click)="tommaro(noteDetails)">Tomorrow      8:00am</button>
                 <button mat-menu-item (click)="nextWeek(noteDetails)">NextWeek   8:00am</button>
-                <button mat-menu-item (click)="dateTimePicker(noteDetails)">date dateTimePicker </button>
+                <button mat-menu-item [matMenuTriggerFor]="dateMenu"><span>date dateTimePicker</span> </button>
+                <!-- <mat-form-field>
+                        <input matInput [matDatepicker]="picker1" placeholder="Angular forms" [formControl]="date">
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field> -->
+               
                 
         </mat-menu>
+
+
+         <mat-menu #dateMenu="matMenu" yPosition="below">
+                <mat-form-field class="example-full-width">
+                        <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Choose a date" [formControl]="date1">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+
+                        <button mat-menu-item (click)="addReminder(noteDetails)">Save</button>
+                      </mat-form-field>
+                
+
+        </mat-menu> 
 
         <mat-menu #belowMenu="matMenu" yPosition="below">
                  <button mat-menu-item (click)="deleteNote(noteDetails)">delete note</button>

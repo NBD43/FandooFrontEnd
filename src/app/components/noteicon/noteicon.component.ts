@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { HttpService } from 'src/app/service/http-service';
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
 import { MatDialog } from '@angular/material';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-noteicon',
@@ -9,10 +10,36 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./noteicon.component.scss']
 })
 export class NoteiconComponent implements OnInit {
+  
+   date1 = new FormControl(new Date());
+  // serializedDate = new FormControl((new Date()).toISOString());
+
   labelArray : any[] = [];
   colorArray : any[] = [
     "#f06292","#ce93d8","#81D4FA","#FFAB91","#a5d6a7","#bdbdbd","#FFE57F","#00BCD4"
   ]
+
+
+  date : any;
+  month:any;
+  year :any;
+
+months = [
+  "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"
+]
+  myFilter = (d: Date): boolean => {
+    const date = d.getDate();
+    const month = d.getMonth();
+    const year = d.getFullYear();
+    // Prevent Saturday and Sunday from being selected.
+    return date >= this.date && month >= this.month && year >= this.year;
+  }
+
+
+
+
+
+
 
   @Input() noteDetails:any;
   @Output() colorChanged : EventEmitter<any> = new EventEmitter();
@@ -22,6 +49,14 @@ export class NoteiconComponent implements OnInit {
   ngOnInit() {
     console.log(this.noteDetails);
     this.getAllLabels();
+
+    //date property
+    var d = new  Date();
+    console.log(d.getMonth());
+    this.date = d.getDate();
+    this.month = d.getMonth();
+    this.year = d.getFullYear();
+    console.log( this.date , this.month , this.year);
     
   }
 
@@ -110,18 +145,51 @@ export class NoteiconComponent implements OnInit {
 
   today(noteDetails){
     console.log(noteDetails);
-    var url="note/reminder?noteId="+noteDetails;
+   // var url="note/reminder?noteId="+noteDetails;
     var d = new Date(); 
     // var localdate=d.toLocaleString().replace('/',':').replace('/',':').replace(',',' ')
     // console.log( d.toLocaleString().replace('/',':').replace('/',':').replace(',',' ') );
-    console.log(d.toLocaleDateString().replace('/',':').replace('/',':') + " "+"20:58:04");
-    
-    
-    
-    
+   // console.log(d.toLocaleDateString().replace('/',':').replace('/',':') + " "+"20:58:04");
+    var dateTime=d.toLocaleDateString().replace('/','-').replace('/','-') + " "+"20:58:04";
+    console.log(dateTime);
+    var url="note/reminder?noteId="+noteDetails.noteId+"&reminderDate="+dateTime;
+    this.httpService.addReminder(url,noteDetails).subscribe((response:any)=>{
+      console.log(response);
+    });
 
+    }
+    
+ tommaro(noteDetails){
 
+var today = new Date();
+var tomorrow = new Date();
+tomorrow.setDate(today.getDate()+1);
+  //var d = new Date(1);
+  var dateTime=tomorrow.toLocaleDateString().replace('/','-').replace('/','-') + " "+"08:00:04";
+  console.log(dateTime);
+   var url="note/reminder?noteId="+noteDetails.noteId+"&reminderDate="+dateTime;
+   this.httpService.addReminder(url,noteDetails).subscribe((response:any)=>{
+     console.log(response);
+   });
+    
+  }
 
+  nextWeek(noteDetails){
+    var today = new Date();
+var tomorrow = new Date();
+tomorrow.setDate(today.getDate()+7);
+  //var d = new Date(1);
+  var dateTime=tomorrow.toLocaleDateString().replace('/','-').replace('/','-') + " "+"08:00:04";
+  console.log(dateTime);
+  var url="note/reminder?noteId="+noteDetails.noteId+"&reminderDate="+dateTime;
+  this.httpService.addReminder(url,noteDetails).subscribe((response:any)=>{
+    console.log(response);
+  });
+
+  }
+
+  addReminder(noteDetails){
+    console.log(n);
     
   }
 }
