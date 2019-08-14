@@ -189,7 +189,20 @@ tomorrow.setDate(today.getDate()+7);
   }
 
   addReminder(noteDetails){
-    console.log(n);
+    console.log(noteDetails);
+   // console.log(this.date1.value.toLocaleDateString().replace('/','-').replace('/','-'));
+
+    var date=this.date1.value.toLocaleDateString().replace('/','-').replace('/','-') + " "+"08:00:04";
+
+    console.log(date);
+
+    var url="note/reminder?noteId="+noteDetails.noteId+"&reminderDate="+date;
+  this.httpService.addReminder(url,noteDetails).subscribe((response:any)=>{
+    console.log(response);
+  });
+    
+    
+     
     
   }
 }

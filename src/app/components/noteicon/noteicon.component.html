@@ -18,7 +18,7 @@
                 <button mat-menu-item (click)="today(noteDetails)">Today        8:00pm </button>
                 <button mat-menu-item (click)="tommaro(noteDetails)">Tomorrow      8:00am</button>
                 <button mat-menu-item (click)="nextWeek(noteDetails)">NextWeek   8:00am</button>
-                <button mat-menu-item [matMenuTriggerFor]="dateMenu"><span>date dateTimePicker</span> </button>
+                <button mat-menu-item [matMenuTriggerFor]="dateMenu"><span><mat-icon>schedule</mat-icon> dateTimePicker</span> </button>
                 <!-- <mat-form-field>
                         <input matInput [matDatepicker]="picker1" placeholder="Angular forms" [formControl]="date">
                         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>

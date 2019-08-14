@@ -35,7 +35,7 @@
 </div>
 
 
-<div class="get-notes" fxLayout="row wrap" fxLayoutAlign="center center" cdkDropList class="example-list"
+<div class="get-notes" fxLayout="row wrap" fxLayoutAlign="start end " cdkDropList class="example-list"
    (cdkDropListDropped)="drop($event)">
    <mat-card class="getNoteDiv" *ngFor="let item of notesArray" [ngStyle]="{'background': item.colour}" cdkDrag>
       <div fxLayout="row wrap" fxLayoutAlign="end center"><img src="../../../assets/images/svg/unpin.svg"
