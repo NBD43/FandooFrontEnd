@@ -67,7 +67,7 @@
         <div  style="width: 200px; height: 50px;" fxLayout="row" fxLayoutAlign="start center"><b>Labels</b></div>
 
         <div fxLayout="column" style="width: 200px"  fxLayoutAlign="space-between start">
-            <div  *ngFor="let label of labelArray" fxLayout="row" fxLayoutGap="20%" style="width: 100%;">  <div fxFlexOffset="20"><mat-icon>label_outline</mat-icon></div> <div>  {{ label.labelName}} </div> </div> 
+            <div (click)="labelNote(label.labelName)" *ngFor="let label of labelArray" fxLayout="row" fxLayoutGap="20%" style="width: 100%;">  <div fxFlexOffset="20"><mat-icon>label_outline</mat-icon></div> <div>  {{ label.labelName}} </div> </div> 
         </div>
         <div class="nav-div" (click)="onEditLabel()"  fxLayout="row" fxLayoutAlign="space-evenly center"><mat-icon >create</mat-icon>EditLabel </div>
         
@@ -111,7 +111,7 @@
                  </mat-card>
                </div>
           </div>  -->
-          <div style="margin-left:10%;margin-top: 2%">
+          <div style="margin-left:10%;margin-top: 2%;overflow: auto;">
             <router-outlet></router-outlet>
             <!-- <app-getnote></app-getnote> -->
         </div>

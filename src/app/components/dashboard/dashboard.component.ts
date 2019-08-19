@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
   email: any;
   token: any;
   profile: string;
+  label:string;
   fundooTitle = 'FundooNotes';
   events: string[] = [];
   matBoolean: boolean = false;
@@ -53,8 +54,17 @@ export class DashboardComponent implements OnInit {
     this.email = localStorage.getItem('emailId')
     console.log(this.token)
     console.log(this.email)
+    this.dataService.currentLabel.subscribe(label =>this.label=label)
 
 
+
+  }
+
+  labelNote(label){
+    console.log("current label:"+label);
+    this.dataService.currentlabelNote(label);
+    this.router.navigate(['dashboard/labelNotes'])
+    
 
   }
 

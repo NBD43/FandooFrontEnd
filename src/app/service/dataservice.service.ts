@@ -21,4 +21,12 @@ private searchNote=new BehaviorSubject([]);
   changeNoteSearch(message:any){
     this.searchNote.next(message)
 }
+
+  private label=new BehaviorSubject('defaultlabel');
+  currentLabel=this.label.asObservable();
+  currentlabelNote(message:string){
+      this.label.next(message)
+  }
+
+
 }

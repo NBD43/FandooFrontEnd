@@ -33,7 +33,10 @@ import { DisplayComponent } from './components/display/display.component';
 import { RemindernoteComponent } from './components/remindernote/remindernote.component';
 import { CollaboratorComponent } from './components/collaborator/collaborator.component';
 //import { ArchiveComponent } from './components/archive/archive.component';
-
+import 'angular-material-time-picker/dist/md-time-picker.css';
+import ngTimePicker from 'angular-material-time-picker';
+import { LabelNotesComponent } from './components/label-notes/label-notes.component';
+//
 
 
 
@@ -57,6 +60,7 @@ import { CollaboratorComponent } from './components/collaborator/collaborator.co
     DisplayComponent,
     RemindernoteComponent,
     CollaboratorComponent,
+    LabelNotesComponent,
     //ArchiveComponent
     
   ],
@@ -74,4 +78,6 @@ import { CollaboratorComponent } from './components/collaborator/collaborator.co
   providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+ // angular.module('NoteiconComponent', [ngTimePicker]);
+ }

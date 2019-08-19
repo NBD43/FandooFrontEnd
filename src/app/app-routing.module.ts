@@ -17,6 +17,7 @@ import { TrashnoteComponent } from './components/trashnote/trashnote.component';
 import { SearchnoteComponent } from './components/searchnote/searchnote.component';
 import { RemindernoteComponent } from './components/remindernote/remindernote.component';
 import { CollaboratorComponent } from './components/collaborator/collaborator.component';
+import { LabelNotesComponent } from './components/label-notes/label-notes.component';
 //import { ArchiveComponent } from './components/archive/archive.component';
 
 
@@ -39,7 +40,8 @@ const routes: Routes = [
       { path: 'trashnote', component: TrashnoteComponent },
       { path: 'searchNote', component: SearchnoteComponent },
       { path: 'reminderNotes', component: RemindernoteComponent },
-      { path: 'collaborator', component: CollaboratorComponent }
+      { path: 'collaborator', component: CollaboratorComponent },
+      {path:'labelNotes',component:LabelNotesComponent}
 
       
 
