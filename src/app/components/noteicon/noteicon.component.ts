@@ -147,10 +147,12 @@ months = [
     console.log(noteDetails);
    // var url="note/reminder?noteId="+noteDetails;
     var d = new Date(); 
-    // var localdate=d.toLocaleString().replace('/',':').replace('/',':').replace(',',' ')
+   // console.log("DAte ::::::::",d);
+     var localdate=d.toLocaleString().replace('/',':').replace('/',':').replace(',',' ')
     // console.log( d.toLocaleString().replace('/',':').replace('/',':').replace(',',' ') );
    // console.log(d.toLocaleDateString().replace('/',':').replace('/',':') + " "+"20:58:04");
     var dateTime=d.toLocaleDateString().replace('/','-').replace('/','-') + " "+"20:58:04";
+   // var dateTime= d + '8:00:00'
     console.log(dateTime);
     var url="note/reminder?noteId="+noteDetails.noteId+"&reminderDate="+dateTime;
     this.httpService.addReminder(url,noteDetails).subscribe((response:any)=>{

@@ -23,6 +23,7 @@ import { LabelNotesComponent } from './components/label-notes/label-notes.compon
 
 
 
+
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },

@@ -36,7 +36,7 @@ import { CollaboratorComponent } from './components/collaborator/collaborator.co
 import 'angular-material-time-picker/dist/md-time-picker.css';
 import ngTimePicker from 'angular-material-time-picker';
 import { LabelNotesComponent } from './components/label-notes/label-notes.component';
-//
+import { DatePipe } from '@angular/common';
 
 
 
@@ -61,6 +61,7 @@ import { LabelNotesComponent } from './components/label-notes/label-notes.compon
     RemindernoteComponent,
     CollaboratorComponent,
     LabelNotesComponent,
+    
     //ArchiveComponent
     
   ],
@@ -73,9 +74,9 @@ import { LabelNotesComponent } from './components/label-notes/label-notes.compon
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,MatIconModule,
-    FlexLayoutModule,MatSidenavModule,MatInputModule,ImageCropperModule,MatMenuModule,MatDialogModule,MatCardModule
+    FlexLayoutModule,MatSidenavModule,MatInputModule,ImageCropperModule,MatMenuModule,MatDialogModule,MatCardModule,
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {

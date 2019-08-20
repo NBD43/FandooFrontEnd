@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/service/http-service';
 import { MatDialog } from '@angular/material';
 import { DataserviceService } from 'src/app/service/dataservice.service';
+import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-remindernote',
@@ -9,12 +11,13 @@ import { DataserviceService } from 'src/app/service/dataservice.service';
   styleUrls: ['./remindernote.component.scss']
 })
 export class RemindernoteComponent implements OnInit {
+  today: number = Date.now();
 
   path1:String ="http://localhost:8080/user/note/trashNotes/";
   token:String=localStorage.getItem('token');
   reminderArray : any[] = [];
   message:String;
-    constructor( private httpService:HttpService,private dialog: MatDialog,private dataService:DataserviceService) {
+    constructor( private httpService:HttpService,private dialog: MatDialog,private dataService:DataserviceService,private datePipe:DatePipe) {
     }
   
     onRefresh(){
@@ -75,6 +78,11 @@ export class RemindernoteComponent implements OnInit {
       })
       
 
+    }
+    dateFormat(date){
+  let newChangeDate= new date(date);
+  console.log("dateFormat"+newChangeDate);
+  return this.datePipe.transform(newChangeDate,"MMM d, y, h:mm:ss a");
     }
 
    
